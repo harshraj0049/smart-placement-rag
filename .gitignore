@@ -15,3 +15,6 @@ chroma_db/
 
 #environment variables 
 .env
+
+#lock file 
+uv.lock
