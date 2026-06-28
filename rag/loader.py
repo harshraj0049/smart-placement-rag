@@ -11,7 +11,10 @@ def pdf_load_and_chunk(pdf_path:str,chunk_size:int =500,chunk_overlap:int =50):
     """for pages in docs:
         print(pages.page_content,"\n")"""
 
-    splitter=RecursiveCharacterTextSplitter(chunk_size=chunk_size,chunk_overlap=chunk_overlap,length_function=len)
+    splitter=RecursiveCharacterTextSplitter(chunk_size=chunk_size,
+                                            chunk_overlap=chunk_overlap,
+                                            length_function=len,
+                                            separators=["\n\n" , "\n" , " " , ""])
     chunks=splitter.split_documents(docs)
 
     print(f"Number of chunks : {len(chunks)}\n")

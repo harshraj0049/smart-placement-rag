@@ -10,7 +10,7 @@ load_dotenv()
 
 os.environ['GOOGLE_API_KEY']=os.getenv("GEMINI_API_KEY")
 
-def query(user_query:str,collage_id:str,retriever):
+def query(user_query:str,college_id:str,retriever):
     #retrive the documents 
     docs=retriever.invoke(user_query)
 
