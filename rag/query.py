@@ -1,7 +1,3 @@
-from rag.loader import pdf_load_and_chunk
-from rag.embedder import EmbeddingModel
-from rag.vector_store import get_vector_store
-from rag.retriver import get_retriver
 from langchain.chat_models import init_chat_model
 import os
 from dotenv import load_dotenv
@@ -25,6 +21,7 @@ def query(user_query:str,college_id:str,retriever):
     Answer the question using ONLY the context provided below.
     If the answer is not in the context, say: "I don't have that information, please contact the T&P cell."  
 
+    Use only the provided context. If the answer requires combining multiple rules from the context, do so logically. Do not invent new rules. If the regulations are genuinely silent on the question, explicitly state that.
     Answer with complete details from the context.
     Do not summarize numerical rules.
     Do not answer questions outside the context.
@@ -36,10 +33,10 @@ def query(user_query:str,college_id:str,retriever):
 
     Question: {user_query}
     """
-    model=init_chat_model("google_genai:gemini-3.1-flash-lite")
+    model=init_chat_model("google_genai:gemma-4-31b-it")
     response=model.invoke(prompt)
 
-    return response.content 
+    return response.text 
 
 
 
