@@ -1,0 +1,819 @@
+{
+  "version": "v2",
+  "college_id": "kiit",
+  "timestamp": "20261027_210634",
+  "total_queries": 34,
+  "results": [
+    {
+      "id": 1,
+      "category": "easy",
+      "question": "What is the minimum attendance required for theory classes?",
+      "response": [
+        {
+          "type": "text",
+          "text": "A minimum of 75% (or as per AICTE norms for Medical reasons) attendance is required for theory classes [Page 2 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0T4RABxTjNHweGsVIrsw2HkikfH824Z0NEcUB2mJ2F9K1jnSTYeOG/02tjYxPfaXscc9SCbjEzrY84aNnJsMsB9xeoKALf0mJHDVUARDcXa6WG6HCDXmcjuGQ="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 18.88,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "category": "easy",
+      "question": "What is the attendance requirement for practicals and seminars?",
+      "response": [
+        {
+          "type": "text",
+          "text": "For practicals and seminars, 100% attendance (or as per AICTE norms for Medical reasons) is mandatory [Page 2 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TiN0GLtYBDH0TUmxCmiyJ2aFc8zE4T3xNohkAfUbhA93T2xbTujngTavXG/gRxOlAyEAZmekmsYNJ3CJUVeH9h1VSIbSei/mCKfZ95EeOTfQVUK95zyj6xuA="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.97,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "category": "easy",
+      "question": "How many exit tests are mandatory before placement participation?",
+      "response": [
+        {
+          "type": "text",
+          "text": "A student has to appear for all 3 (three) exit tests conducted by Kareer School, failing which they will not be eligible to participate in the campus recruitment process.\n\n[Source: Page 2 — T&P Regulations_2027 Batch.pdf]",
+          "extras": {
+            "signature": "EmAKXgFpFH0ThcvuTNQuouxCrwyEmDJ49SetPVtq5QdbNXI+oiAXfIOSaQ1Duyx8cKzGNhv26etoZrvOUgYglaoBKBaF4KkU2w3Hc1mAOtM2lXGlFrDVSBeeWYHipdS4Zx0="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.44,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "category": "easy",
+      "question": "Can students with pending university dues participate in placements?",
+      "response": [
+        {
+          "type": "text",
+          "text": "I don't have that information, please contact the T&P cell.",
+          "extras": {
+            "signature": "EmAKXgFpFH0TvOR3R/sZExefh8X67KX1sh07/qZQSIkESWqqhK5t1OR4MUS+AK3dCthFaBOaa9cHGUa1M/NG7YxVo94wVO3p20VLRg1KdKdzd+bKzYDdBnVhNst96yvVu+o="
+          }
+        }
+      ],
+      "sources": [
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.19,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "category": "easy",
+      "question": "What happens if plagiarism is detected during a placement process?",
+      "response": [
+        {
+          "type": "text",
+          "text": "If students are found indulging in any kind of plagiarism, unfair means, or misconduct during the campus recruitment process as reported by the company, it will be taken seriously by the University. Such students shall be debarred from the campus recruitment process with immediate effect, and the decision of the University in these cases shall be final, binding, and abided by all students [Source: Page 2 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0T1qRkW7z/9jRn15m6bFdRmQQdqXfKhmvEmqj1dAe3KmCM7MXNpgvF4zLxt0SsRCXpr5AuqV0r+46N+Wliw2bwNaUxzElpVB44i/m1VOje79dDnHu9AHVDFhc="
+          }
+        }
+      ],
+      "sources": [
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.21,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "category": "category",
+      "question": "What are the three placement categories?",
+      "response": [
+        {
+          "type": "text",
+          "text": "The three placement categories are based on the CTC per annum offered [Source: Page 3 — T&P Regulations_2027 Batch.pdf]:\n\n* **Category – 1:** CTC ranging from 3 LPA to 7 LPA [Source: Page 3 — T&P Regulations_2027 Batch.pdf]\n* **Category – 2:** CTC ranging from > 7 LPA to 14 LPA [Source: Page 3 — T&P Regulations_2027 Batch.pdf]\n* **Category – 3:** CTC ranging from > 14 LPA [Source: Page 3 — T&P Regulations_2027 Batch.pdf]",
+          "extras": {
+            "signature": "EmAKXgFpFH0TXQZofHBptlGkGrf/9T+vQ/l8I1r715T/XyFhOWyAwFc/0M8YX7+pArahoTTdu5LPd+dJPmY9wnjc1Woi87uaAEtjLoH4wgS883xel7gHRYN63u7eVMzMlMY="
+          }
+        }
+      ],
+      "sources": [
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 2.07,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "category": "category",
+      "question": "How many offers can a student receive through campus placements?",
+      "response": [
+        {
+          "type": "text",
+          "text": "A student can avail a maximum of three (03) offers through the campus recruitment process, except for core engineering stream students. \n\n[Source: Page 3 — T&P Regulations_2027 Batch.pdf]",
+          "extras": {
+            "signature": "EmAKXgFpFH0TbLzEMF5S1Tcxm+z2PSqUjakHfP2rewDgJXb9HlCw6bzTEvIGjjBv4vlGcMsJvSK84Dq4FZVTQsD9DTsZuKzIr/aff3fhWjoMYnsZ2k+HMJ4t0ANZ6OlVxGo="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 21.43,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "category": "category",
+      "question": "Can a student with a Category 3 offer continue participating in placements?",
+      "response": [
+        {
+          "type": "text",
+          "text": "No. A student offered in category – 3 shall not be eligible to participate in further campus recruitment process [Page 4 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0Tke5ficzmrhu61QxdCE39E/ahymsRYNngdiVp4q1bXlcy5bYkQfE8uhEpG0PXundIt77G0WaAPk0KKFvgKTLmr+OYAswNiZJJztBhiXdywxCtBP/JFA7yhws="
+          }
+        }
+      ],
+      "sources": [
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 26.93,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "category": "category",
+      "question": "If I get a 6 LPA offer, what minimum package do I need to become eligible for Category 2?",
+      "response": [
+        {
+          "type": "text",
+          "text": "To become eligible for Category 2 with an existing offer of 6 LPA in Category 1, the new offer's CTC must be more than 1.5 times the existing CTC or a minimum of 7.01 LPA, whichever is higher [Source: Page 3 — T&P Regulations_2027 Batch.pdf].\n\n* **1.5 times the existing CTC:** $1.5 \\times 6\\text{ LPA} = 9\\text{ LPA}$\n* **Minimum threshold:** $7.01\\text{ LPA}$\n\nComparing the two (9 LPA vs. 7.01 LPA), the higher amount is **9 LPA**. Therefore, you need a minimum package of **9.0 LPA** (or equal to or more than 9.0 LPA) to be eligible for Category 2 [Source: Page 3 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TXuwAHfDkNydnYh4cC+rHB3ukPvr6v3Ynb0k9EkVr0+aJ9mRVUPFsHnwFxKrx+/XXF611Cxo2C88LIz63JzUwgWA3FMF8rURXKq7dbB72j0TloX7u+e2Hbdk="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 19.34,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "category": "category",
+      "question": "If I get a 10 LPA offer, can I sit for a 14 LPA company?",
+      "response": [
+        {
+          "type": "text",
+          "text": "**It depends** on the specific categories of the offers and how the upgrade rules apply. \n\nHere is how the policy applies to your situation based on the CTC categories:\n\n1. **Category Definition:** A 10 LPA offer falls into **Category – 2** (CTC ranging from > 7 LPA to 14 LPA) [Page 3 — T&P Regulations_2027 Batch.pdf].\n2. **Upgrade Rules from Category – 2:** \n   - A student who receives an offer in Category – 2 is eligible for **Category – 3** (CTC ranging from > 14 LPA) provided the new CTC is more than 1.5 times the existing CTC or a minimum of 15.0 LPA, whichever is higher [Page 3 — T&P Regulations_2027 Batch.pdf, Page 4 — T&P Regulations_2027 Batch.pdf]. \n   - A student who receives an offer in Category – 2 is **not eligible** to participate further in Category – 1 [Page 3 — T&P Regulations_2027 Batch.pdf].\n   - A student **cannot participate in the same slab** if he or she already has an offer in that slab [Page 4 — T&P Regulations_2027 Batch.pdf].\n\n**Conclusion:** \n- If the 14 LPA company is in **Category – 3**, you would **not** be eligible because 14 LPA does not meet the Category – 3 threshold requirement (which requires a CTC greater than 14 LPA, and an upgrade from a 10 LPA offer requires meeting the higher threshold of >15 LPA or 1.5x your existing CTC) [Page 3 — T&P Regulations_2027 Batch.pdf, Page 4 — T&P Regulations_2027 Batch.pdf].\n- If the 14 LPA company is in **Category – 2**, you would **not** be eligible to participate because you cannot participate in the same slab (Category – 2) if you already hold an offer in it [Page 4 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TgE31EV6TbwNS5FcVeauz7w5hzdeZtqAud6kw68NoAtH3/6Ni9aXYD8QwW+GAIz5MhCEXFPrHBSpCjps5P49rBCO2EzMWcc3c/pD6c/xe+d9PlLMqan6bD7w="
+          }
+        }
+      ],
+      "sources": [
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 20.56,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "category": "category",
+      "question": "If I get a 10 LPA offer, what minimum package do I need to become eligible for Category 3?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Based on the placement regulations, if you receive an offer of 10 LPA (which falls under Category – 2, CTC ranging from > 7 LPA to 14 LPA), you are eligible for Category – 3 provided the CTC is more than 1.5 times your existing CTC or a minimum of 15.0 LPA, whichever is higher [Source: Page 3 — T&P Regulations_2027 Batch.pdf, Source: Page 4 — T&P Regulations_2027 Batch.pdf].\n\n**Calculation:**\n1. 1.5 times your existing CTC: $10\\text{ LPA} \\times 1.5 = 15.0\\text{ LPA}$\n2. Minimum threshold specified in the example: $15.0\\text{ LPA}$ [Source: Page 4 — T&P Regulations_2027 Batch.pdf]\n\nTaking the higher of the two, you need a package **equal to or more than 15.0 LPA** to be eligible for Category – 3 [Source: Page 4 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TCqD7rqONnbFJK3LYCVuz2Y/xCrwaFmliEgu27al0NGN8LRXqc8w9cqB6UTFWpwq9vnHlaaRcoyeGKzJW0wmviBv2b2vFJDDS4bnLiY9qG2iliUXOKa8+aTI="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 24.63,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "category": "core",
+      "question": "Can a core branch student receive multiple core offers?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Yes. For core branches (Civil, EE, MECH, Mechatronics, Automobile, Aerospace, and Chemical), students can avail a maximum of two offers from core companies [Source: Page 4 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TNmSc1dombRZl2KjvswLVcfbQLdr+sQBQzc88EsGQpuxAkWs5+QeTDneNU+ZY+j32i0dWhBwwZdavI4VI7AjsXS2fHIqIexayg6a2973eOYqJnCGYKZleoh4="
+          }
+        }
+      ],
+      "sources": [
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 4.73,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "category": "core",
+      "question": "If a core student gets an IT offer first, can they still sit for core companies?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Yes. A core engineering stream student who receives their first offer in an IT company is allowed to participate in core companies until they get one offer in a core company [Page 4 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TWyV06p6QjMb5bOxZ1DkJOZlWc+ecMR1FNeDTLvLIGtev2iDHAy6T3VGi7lM9gxOFzd/k8GL17DyDBF2Joiv0ZOb8617Fqb5OxqZeCrUkmyaqzKzeLZEPQ7A="
+          }
+        }
+      ],
+      "sources": [
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 25.85,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "category": "core",
+      "question": "If a core student gets a core offer first, can they participate in IT companies later?",
+      "response": [
+        {
+          "type": "text",
+          "text": "No. According to the university's placement regulations, a student who receives their first offer in a Core Company/core profile shall not be allowed to participate in IT/ITES Companies [Page 4 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TpM3zcCld7Sq8ZCqZBeMD7AStYsCCZk2ev237Nqm0ehSqT2LmWx9aoTvTpUnh6UGVujqFzPCLnT+/+9l8oGBpWV55EIAtaRXqVYrqZiSC0+9Yt8hmD3l3m9g="
+          }
+        }
+      ],
+      "sources": [
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 22.27,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "category": "core",
+      "question": "How many IT offers can a core engineering student receive?",
+      "response": [
+        {
+          "type": "text",
+          "text": "A student from a core engineering stream can avail a maximum of one (1) IT/ITES offer.\n\n[Source: Page 4 — T&P Regulations_2027 Batch.pdf]",
+          "extras": {
+            "signature": "EmAKXgFpFH0TYiWKIP9+efjMC3sp8M8BEDsHz0GXiHtoh1wi1TbaMUWUlQi1TGBLemJS2QBP3wIs9dzCudmrT+2hvav1aMdc9fMWKnUdFkEum1LUgjvC9EDNKuWTCCHzvFk="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 22.22,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "category": "discipline",
+      "question": "What happens if I register for a drive and do not attend it?",
+      "response": [
+        {
+          "type": "text",
+          "text": "If you register for a campus process, any absenteeism post registering for the campus drive shall strictly lead to the disqualification of the candidate from the campus recruitment program [Page 4 — T&P Regulations_2027 Batch.pdf]. The university follows a 'Zero Tolerance' policy in this aspect [Page 4 — T&P Regulations_2027 Batch.pdf]. \n\nAdditionally, registering for a campus process assumes you have a clear understanding of the Job Description (JD) and are completely interested in the career prospects, requiring mandatory participation; failing to participate will result in disqualification from attending the next campus drive [Page 4 — T&P Regulations_2027 Batch.pdf]. \n\nThe University's decision in this regard shall be final and binding [Page 4 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TyUxq0eenxgBFjdaCITGG8qInPZ0F6ky53IgaBlzWJRJ8VydiYcwZe0RTxTRSLSt5NCycsfmTHMIQlrixmBjzJb5bIpZmP1mxQ7FsjwCAlmDZp7RyopPrmZk="
+          }
+        }
+      ],
+      "sources": [
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 7.14,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "category": "discipline",
+      "question": "Can I reject an offer after being selected?",
+      "response": [
+        {
+          "type": "text",
+          "text": "No. Once offered, students cannot reject the offers made by the visiting organization [Page 4 — T&P Regulations_2027 Batch.pdf]. Furthermore, it is mandatory to accept the offer if a student is selected in any of the categories of companies offering PPO / Internship, failing which the student will be considered placed and will not be given any further opportunities in forthcoming campus opportunities [Page 5 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0T2teheOa9oLMn5lLqx1rULXweK65jNbg/O5lnIHwAvsP/ULOiGdFpKJO2E7y+OWIrA21bEJfXcbKrBD36OZ6KzZXdKtnjjhU868bNPtg9vvTZVjU5jgNSCIY="
+          }
+        }
+      ],
+      "sources": [
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 9.2,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "category": "discipline",
+      "question": "What happens if I skip an interview round after clearing the online test?",
+      "response": [
+        {
+          "type": "text",
+          "text": "If you skip further rounds of a campus recruitment process after attending any rounds or phases (such as a written test, GD, or PI) other than the PPT, you will be disqualified from the campus recruitment program [Source: Page 4 — T&P Regulations_2027 Batch.pdf]. Additionally, this may lead to strict disciplinary actions, including monetary fines, by the University [Source: Page 4 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TMld2t9YT6SiG4k6nFUZHO8ml4ZWIi8jVWU4TaoAXknvQVx4DJk2OjXdojkf9iWA5kyBXzw1vbHYKLoizbxW1tRt7KakWfEyud7LdguArVDDI+a4v3Njlorg="
+          }
+        }
+      ],
+      "sources": [
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 14.46,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "category": "discipline",
+      "question": "Can students directly contact company officials during the recruitment process?",
+      "response": [
+        {
+          "type": "text",
+          "text": "No, students are not allowed to communicate directly with the visiting companies or any officials from the company unless due permission is taken from the university authorities [Page 4 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0T/rcJ0uTV6ErHFs9XCA5x+n835vy442fn08wKU6TAljzesXHhtIvo7WZ4oA3Y7FkE+aHDWVYf0ucQh1Ai5x/NR9u8zeZnL1lcF3YBRd0nC2lCz2dwOS2iKYw="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 16.06,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "category": "discipline",
+      "question": "What happens if a student misbehaves with company representatives?",
+      "response": [
+        {
+          "type": "text",
+          "text": "If a student misbehaves with company representatives (such as through indisciplined behavior, or by pressurizing, negotiating, or disturbing visiting personnel without the knowledge of University authority during the process or before joining), complaints from the company will be treated seriously. This may lead to the cancellation or termination of the offer to the candidate and may even attract strict disciplinary actions from the University [Page 5 — T&P Regulations_2027 Batch.pdf]. \n\nAdditionally, pressurizing, negotiating, or disturbing the personnel of the visiting organization without university approval will disqualify the student from the offer and from the subsequent campus recruitment program [Page 5 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TSqFjK+qdmm7On1dE20oisD3STsBspAc3eDz5M8Qu4hSEl0owBsyIn9xO6nkAGXv778Qt4pZT2kAqM53MXYP/zuYe2elhnks4e0ZYFB3CS0Sumc9u+4NUddg="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 19.69,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "category": "overlap",
+      "question": "If two companies have overlapping recruitment processes and I am waitlisted in one, can I attend the other?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Yes. In the case of overlapping campus processes by two or more companies, students who are waitlisted by the organizations are eligible to attend the subsequent campus processes, provided they have to accept the offer of the organization that is offered first [Page 4 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TL2i8Y7MR2Mbu+3ldjuBOeauSRS1MVxTZt4wgVBC6BwWnIVZFJr1wl7kF0wqo3Dk9qNk4ujsXYRUkYqcr0SfrZjjNTjopXCgnABJkCFhiFFXJ2KxZXm4/UfM="
+          }
+        }
+      ],
+      "sources": [
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 6.43,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "category": "overlap",
+      "question": "Which offer do I have to accept if I receive multiple offers during overlapping processes?",
+      "response": [
+        {
+          "type": "text",
+          "text": "If there is an overlap of campus processes by two or more companies, students who are waitlisted by the organizations are eligible to attend subsequent campus processes and have to accept the offer of the organization that is offered first [Page 4 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TzR1EEX1JpuKaUMxLIQ6p47ewjH3dvXeFOAueWcRw6rThNJR5tv8xN/NbGO3KfBksp1VGAxuUEGNWkLwpmvHTKn6yEf74nRQP4SP6OIY02TWwZrEWq2OIQPk="
+          }
+        }
+      ],
+      "sources": [
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 6.1,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "category": "post_selection",
+      "question": "Is it mandatory to accept an internship or PPO offer?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Yes, it is mandatory to accept the offer for a student who is selected in any of the categories of companies offering PPO / Internship. Failing to do so will result in the student being considered as placed, and no further opportunities shall be given to them in forthcoming campus opportunities [Page 5 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TyZ0sWGRShcpNJ3spE/PcvXox43bZ9dhm81TIQwYQnVzi2Y0Jeg/7vJ71RF7DKDzY7Z+2+MQSusbSm9BFJ96ddAmEtUmXP86R1wF7hCPG//+pm1OQkrZEArI="
+          }
+        }
+      ],
+      "sources": [
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 23.11,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "category": "post_selection",
+      "question": "Can I leave a PPO internship midway?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Yes, but with specific conditions and consequences:\n\n* **Company Permission:** You cannot exit from the internship without the permission of the company [Page 5 — T&P Regulations_2027 Batch.pdf].\n* **Medical Grounds Exception:** If you would like to exit from the internship on medical grounds, you shall be debarred from participating in forthcoming companies on the ground of medical unfitness [Page 5 — T&P Regulations_2027 Batch.pdf]. However, you may be allowed to participate in forthcoming companies after producing a fitness certificate from KIMS [Page 5 — T&P Regulations_2027 Batch.pdf].\n* **Legal and Organizational Compliance:** If under any circumstances you have to leave an organization, you must abide by all clauses of the current company, including legal compliances (if any) [Page 5 — T&P Regulations_2027 Batch.pdf]. The Office of Training and Placement will not be responsible for any legal compliance [Page 5 — T&P Regulations_2027 Batch.pdf].\n\n[Source: Page 5 — T&P Regulations_2027 Batch.pdf]",
+          "extras": {
+            "signature": "EmAKXgFpFH0TruIM/iZ4QQ4atHOQiBeQOHedOQQzvACvzXx0Sgf72fpthLxqOMsLJ0JvGSYhtNbjEZprj2FacX0kfnvHNz6pVc6f8eTjhjjViHmbzfXUxNkZl2xRkBuYCqk="
+          }
+        }
+      ],
+      "sources": [
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 10.09,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "category": "post_selection",
+      "question": "What happens if I leave an internship due to medical reasons?",
+      "response": [
+        {
+          "type": "text",
+          "text": "If you exit from an internship on medical grounds (after acceptance and joining a company offering an internship with a performance-based PPO or a PPO with a mandatory internship), you shall be debarred from participating in forthcoming companies on the ground of medical unfitness [Page 5 — T&P Regulations_2027 Batch.pdf]. \n\nHowever, you may be allowed to participate in forthcoming companies after producing a fitness certificate from KIMS [Page 5 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TBSxsgRoUVAQtWqs+FpZokmFcdyOnLx7bJQp9LweA0f3bZ1TVvyxs9CwVOZpZ66je2VG54eF8D1gm7e2q43Spvnoj3OOriSRzo/pt3FbZElAweMnEWXvV1lo="
+          }
+        }
+      ],
+      "sources": [
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 13.08,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "category": "post_selection",
+      "question": "Do I need to submit any documents after accepting an offer?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Yes. After accepting an offer, a student has to submit a medical fitness certificate to join the company [Page 5 — T&P Regulations_2027 Batch.pdf]. \n\nAdditionally, a student who is selected by any company in the categories mentioned in section 2.5 must mandatorily sign a placement sign-off form as per the given format, which will be mailed to the student after selection [Page 5 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TkjJQz2/GQWfKHKDPsNaVCDYDQtr6m/LmzJFeI5e6sWTryFwEOPaB7urhoncJcU/2NAjRZ/49M/qR57vytMsqFgoV/ozB6UKBBe1M9UdSgp9Td+zcyt5/I1k="
+          }
+        }
+      ],
+      "sources": [
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 17.38,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "category": "post_selection",
+      "question": "What is a placement sign-off form?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Based on the provided documents, a placement sign-off form is a form that a student is required to sign mandatorily according to a given format after their selection to any company category mentioned in section 2.5 [Source: Page 5 — T&P Regulations_2027 Batch.pdf]. The form will be mailed to the student following their selection [Source: Page 5 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TkvxYgHf2t5zRzbh4Nkvmedf5GBRIo6eGSv2ygR590OzdqD+M7WYSDuVe6IN5fE1zpqcBRE5HsfvHAmiEk/Lq8ewoOujeextcm3UR31uE7YtrWgLkON/M5qQ="
+          }
+        }
+      ],
+      "sources": [
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 4.2,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "category": "off_campus",
+      "question": "What should I do if I receive an off-campus offer?",
+      "response": [
+        {
+          "type": "text",
+          "text": "If you receive an off-campus offer, you must inform the office of the placement through a formal email to placement@kiit.ac.in or dean.ie@kiit.ac.in with the attached offer letter [Page 5 — T&P Regulations_2027 Batch.pdf]. \n\nAdditionally, if you received this off-campus offer despite being selected through campus placement and intend to join the off-campus company, you must abide by all clauses of your current company (if already joined), including any legal compliances [Page 5 — T&P Regulations_2027 Batch.pdf]. Please note that joining the company is completely at your own risk when offered through off-campus opportunities [Page 5 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0Tr7I1fMCzb35JS4tnAV1xuwVYixXZ/5/yHXDY5RA7nIrST48eHEwvyO/xhJ0NAD6xevrlT2X0UvMEdL/cn7Wvw1j3B5BDMY9AF/Kht8ERVbAPxqQ0POauy2s="
+          }
+        }
+      ],
+      "sources": [
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 16.62,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "category": "off_campus",
+      "question": "Can I join an off-campus company after already being selected through campus placement?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Yes, you can join an off-campus company even after being selected through campus placement, provided you abide by certain conditions [Source: Page 5 — T&P Regulations_2027 Batch.pdf]. \n\nAccording to the university regulations:\n* If you participate in an off-campus drive and receive an offer despite your selection through campus placement, and you intend to join the off-campus company, you must abide by all clauses of your current campus company (if already joined), including any legal compliances [Source: Page 5 — T&P Regulations_2027 Batch.pdf].\n* Joining a company through off-campus opportunities is completely at your own risk [Source: Page 5 — T&P Regulations_2027 Batch.pdf].\n* Additionally, it is mandatory to inform the placement office of any off-campus offer by sending a formal email to **placement@kiit.ac.in** or **dean.ie@kiit.ac.in** with the attached offer letter [Source: Page 5 — T&P Regulations_2027 Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TDXjcXOOVgSqlHKBLVVmLf/iohjBec3gayb20Un2ym35wDACllrTX+NUItvzq5Q44320IQ5kQh/Loq56uUMWvBkv2ciACxMsnhcMcDIGzPj5fFLzFpWzJrFs="
+          }
+        }
+      ],
+      "sources": [
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 35.15,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "category": "hallucination",
+      "question": "What is the minimum CGPA required for placement?",
+      "response": [
+        {
+          "type": "text",
+          "text": "I don't have that information, please contact the T&P cell.",
+          "extras": {
+            "signature": "EmAKXgFpFH0TYCJ9zrvGX4pz6Bo/LFUA55YqTFDbtvuVJo7Yycoiiykn7X/5a495mBLIBy7lMNTAIFjGbzJNRAuq8E51kwnWdePtJ/YFkBQdVhkGGFKQOD+dACBN2KI2+2c="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 10.92,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "category": "hallucination",
+      "question": "What is the highest package offered at KIIT?",
+      "response": [
+        {
+          "type": "text",
+          "text": "I don't have that information, please contact the T&P cell.",
+          "extras": {
+            "signature": "EmAKXgFpFH0T/ziKuXd0jCNk2gkO7bbcgsRjqedvp1zZ9KuAtWFTmH+9+y1m4zN1Shwo+tqKHX86lYqYsc27yMJLhaAK+f8phjeadaZHMn+BUDrg6luT0nPR7QDnLx392EI="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 14.19,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "category": "hallucination",
+      "question": "How many companies visit KIIT every year?",
+      "response": [
+        {
+          "type": "text",
+          "text": "I don't have that information, please contact the T&P cell.",
+          "extras": {
+            "signature": "EmAKXgFpFH0TxY6T9knAnyyAQnpWSGobbPiyhz5VlAckKvI72bdQ58kGpiOGbd+0lz2wi+9jN0m/HRTh6gLmkVzpCSnLOxH2IjRnlWZB9WFoQS/XEDcvSDmFLalrihibq9Y="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 16.17,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "category": "hallucination",
+      "question": "Can I sit for placements with a 6.5 CGPA?",
+      "response": [
+        {
+          "type": "text",
+          "text": "I don't have that information, please contact the T&P cell.",
+          "extras": {
+            "signature": "EmAKXgFpFH0TBq93kBRKNcjnfUAeU68cVX3+lXo2qc81d/D+cZQIAWL9pTNhmCiMsizjIxH7wb6CzqTNYQe8qOOILTJ5Uscf+B/alztk1f+1rJxPDEQ3DWGxKG72wH41AeE="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 32.82,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "category": "hallucination",
+      "question": "What is the average salary package for KIIT students?",
+      "response": [
+        {
+          "type": "text",
+          "text": "I don't have that information, please contact the T&P cell.",
+          "extras": {
+            "signature": "EmAKXgFpFH0TCNWeaHK6eSPKCuBt4LJS85+9f9UpRrcQ/EsRJfaye4Hb87GErJM5PFcMMjr1qTCKmux08xqmDIn4W4Kao6QnN5g+XPFlqXSHi4w0o3RC9Qkw9C51KcOwrKM="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 12.19,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    }
+  ]
+}
