@@ -1,24 +1,23 @@
 from langchain_chroma import Chroma
 import hashlib
 
-def upsert_document(chunks, embeddings, college_id, document_name, content_hash):
+def upsert_document(chunks, embeddings, college_id, document_id, content_hash):
     vector_store = Chroma(
         collection_name=f"placement_{college_id}",
         embedding_function=embeddings,
         persist_directory="./chroma_db",
     )
-    doc_id = hashlib.md5(document_name.encode()).hexdigest()
-    existing = vector_store.get(where={"document_id": doc_id})
+    existing = vector_store.get(where={"document_id": document_id})
     status = "added"
     if existing["ids"]:
         if existing["metadatas"][0].get("content_hash") == content_hash:
             return "skipped"
         vector_store.delete(ids=existing["ids"])
         status = "updated"
-    for c in chunks:
-        c.metadata["document_id"] = doc_id
-        c.metadata["document_name"] = document_name
-    vector_store.add_documents(documents=chunks)
+    vector_store.add_documents(
+        documents=chunks,
+        ids=[c.metadata["chunk_id"] for c in chunks],   # stable chunk ids
+    )
     return status
 
 def get_vector_store(embeddings,college_id:str="kiit"):

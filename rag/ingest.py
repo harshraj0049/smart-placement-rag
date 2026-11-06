@@ -16,15 +16,21 @@ MAX_PDF_BYTES = 20 * 1024 * 1024
 class DocType(str, Enum):
     tnp_rules = "tnp_rules"
     company_notice = "company_notice"
-
+    placement_faq = "placement_faq"
 
 class NoticeType(str, Enum):
-    # Shortlist/result notices are deliberately absent: they contain student PII.
+    # shortlist/result still deliberately absent (student PII)
     registration = "registration"
+    job_description = "job_description"
+    eligibility = "eligibility"
     ppt = "ppt"
     schedule = "schedule"
     update = "update"
     general = "general"
+
+# inside DocumentMetadata, add:
+    job_role: Optional[str] = Field(default=None, max_length=100)
+# and add "job_role" to the cleaning validator:  @field_validator("company", "title", "job_role", mode="before")
 
 
 class DocumentMetadata(BaseModel):
@@ -89,34 +95,39 @@ def ingest_document(file_path, original_filename: str, meta: DocumentMetadata,
     document_key = "|".join(parts)
 
     file_hash = hashlib.sha256(raw).hexdigest()
+    document_id = hashlib.md5(document_key.encode()).hexdigest()
+    document_name = meta.title or original_filename      # contract: original or admin-provided title
+
     base = {
         "college_id": college_id,
         "doc_type": meta.doc_type.value,
         "batch": meta.batch,
-        "source_file": original_filename,
+        "document_id": document_id,
+        "document_name": document_name,
         "content_hash": file_hash,
         "ingest_version": INGEST_VERSION,
         "ingested_at": int(time.time()),
     }
-    optional = {
-        "company": meta.company.lower() if meta.company else None,   # normalized, for exact filters
-        "company_display": meta.company,                             # original casing, for answers
-        "notice_type": meta.notice_type.value if meta.notice_type else None,
-        "title": meta.title,
-        "notice_date": int(meta.notice_date.strftime("%Y%m%d")) if meta.notice_date else None,
-    }
-    base.update({k: v for k, v in optional.items() if v is not None})  # Chroma rejects None values
+    if is_notice:                                         # omitted entirely for rules and FAQs
+        base["company"] = meta.company.lower()
+        base["company_display"] = meta.company
+        base["notice_type"] = meta.notice_type.value
+        if meta.job_role:
+            base["job_role"] = meta.job_role
+    if meta.notice_date:                                  # proposed addition, see below
+        base["notice_date"] = int(meta.notice_date.strftime("%Y%m%d"))
 
-    header = (f"[Company: {meta.company} | Notice: {meta.notice_type.value}]" if is_notice
-              else f"[Document: {meta.title or 'T&P Rules and Regulations'}]")
-    for i, c in enumerate(chunks):                    # whitelist metadata, drop PDF noise
-        c.metadata = {**base, "page": c.metadata.get("page", 0), "chunk_index": i}
+    if is_notice:
+        header = f"[Company: {meta.company} | Notice: {meta.notice_type.value}]"
+    else:
+        default = "Placement FAQ" if meta.doc_type == DocType.placement_faq else "T&P Rules and Regulations"
+        header = f"[Document: {meta.title or default}]"
+
+    for i, c in enumerate(chunks):                        # whitelist; drops PDF noise and page_label
+        c.metadata = {**base, "page": c.metadata.get("page", 0),
+                      "chunk_index": i, "chunk_id": f"{document_id}:{i}"}
         c.page_content = f"{header}\n{c.page_content}"
 
-    status = upsert_document(chunks, em, college_id, document_key, file_hash)
-    return IngestResult(
-        status=status,
-        document_id=hashlib.md5(document_key.encode()).hexdigest(),
-        document_name=document_key,
-        chunks=len(chunks),
-    )
+    status = upsert_document(chunks, em, college_id, document_id, file_hash)
+    return IngestResult(status=status, document_id=document_id,
+                        document_name=document_name, chunks=len(chunks))
