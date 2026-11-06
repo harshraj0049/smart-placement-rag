@@ -57,6 +57,53 @@ TEST_QUERIES = [
     ("hallucination", "What is the average salary package for KIIT students?"),
 ]
 
+COMPANY_TEST_QUERIES = [
+    # Eligibility & Academic Criteria (Testing precise numeric extraction and multi-condition rules)
+    ("eligibility", "What is the exact CGPA requirement for the AntBox recruitment drive?"), #[cite: 1]
+    ("eligibility", "Which companies require an 80% or above throughout the entire academic career?"), #[cite: 21, 28]
+    ("eligibility", "If a student has an 8.0 CGPA, are they eligible to apply for Osfin.ai?"), #[cite: 24]
+    ("eligibility", "Does Infosys have a specific percentage cutoff for 10th and 12th grades?"), #[cite: 8]
+    ("eligibility", "Can a student with active backlogs apply for the BiteSpeed or Juspay drives?"), #[cite: 2, 9]
+
+    # Compensation & Financials (Testing extraction of CTC, stipends, and variable pay)
+    ("compensation", "What is the highest CTC offered by Juspay Technologies for the SDE role?"), #[cite: 9]
+    ("compensation", "How much joining bonus does Infosys offer for the Specialist Programmer L1 and L2 roles?"), #[cite: 8]
+    ("compensation", "What is the detailed 4-year compensation structure for Mu Sigma?"), #[cite: 18]
+    ("compensation", "How much is the internship stipend for CME Group before the PPO conversion?"), #[cite: 4]
+    ("compensation", "What is the total CTC offered by Zen Data Shastra over the three-year period?"), #[cite: 42]
+
+    # Roles, Skills & Technical Requirements (Testing entity extraction and technical domain mapping)
+    ("roles_skills", "Which company is specifically hiring for a Forward Deployed Engineer Intern?"), #[cite: 5]
+    ("roles_skills", "What mandatory programming language requirement is needed for the Pibit.ai AI Internship?"), #[cite: 26]
+    ("roles_skills", "Which company is hiring for Mechanical Engineers and Embedded Hardware roles for EV subsystems?"), #[cite: 37, 39]
+    ("roles_skills", "Is knowledge of PureScript and functional programming required for Juspay?"), #[cite: 9, 10]
+    ("roles_skills", "What specific AI tools does Tredence expect candidates to use to expedite coding delivery?"), #[cite: 36]
+
+    # Service Agreements & Bonds (Testing complex rule extraction and financial penalties)
+    ("agreements", "What is the financial penalty or recovery clause if I leave Mu Sigma within 24 months?"), #[cite: 18]
+    ("agreements", "How long is the mandatory service agreement for GyanSys?"), #[cite: 7]
+    ("agreements", "What are the exact terms of the indemnity agreement for Optimus Information?"), #[cite: 21, 22]
+    ("agreements", "Does KPIT enforce a service agreement, and if so, for how many years?"), #[cite: 15]
+
+    # Logistics, Assessments & Drive Specifics (Testing situational constraints)
+    ("logistics", "Which company strictly requires a 1-minute video submission detailing past experiences during registration?"), #[cite: 2]
+    ("logistics", "What are the strict browser and device requirements for the Springworks AI interview?"), #[cite: 33]
+    ("logistics", "Which company explicitly states that they will take strict action against absentees who fail to attend the physical drive?"), #[cite: 16]
+    ("logistics", "Who conducts the initial shortlisting for the Recrivio drive before the company steps in?"), #[cite: 29]
+
+    # Complex / Multi-Hop Reasoning (Testing the RAG's ability to cross-reference multiple fields)
+    ("multi_hop", "Which companies offer a stipend of Rs. 30,000 or more per month during the internship phase?"), #[cite: 5, 9, 16, 26, 28]
+    ("multi_hop", "If I am an Electrical Engineering (EE) student, which hardware or embedded companies can I apply to?"), #[cite: 37]
+    ("multi_hop", "Which roles offer a base CTC of over 15 LPA immediately upon joining?"), #[cite: 8, 9, 18, 28, 29]
+
+    # Hallucination & Negative Tests (System should confidently state "I don't know" or deny the premise)
+    ("hallucination", "What is the minimum CGPA required to apply for the Google Software Engineering role?"),
+    ("hallucination", "Is the BiteSpeed internship completely remote?"),
+    ("hallucination", "Can I use Perplexity or ChatGPT during the Springworks AI interview if I get stuck?"),
+    ("hallucination", "What is the signing bonus for the Zaptics Research Embedded Software role?"),
+    ("hallucination", "Does Optimus Information allow candidates to skip the English proficiency written test?")
+]
+
 FALLBACK = (
     "I don't have that information, please contact the T&P cell."
 )
@@ -323,12 +370,12 @@ def run_evaluation(
     retrieval_diagnostics = []
 
     for i, (category, question) in enumerate(
-        TEST_QUERIES
+        COMPANY_TEST_QUERIES
     ):
         query_id = i + 1
 
         print(
-            f"[{query_id:02d}/{len(TEST_QUERIES)}] "
+            f"[{query_id:02d}/{len(COMPANY_TEST_QUERIES)}] "
             f"{category.upper()} | {question[:60]}..."
         )
 
@@ -388,7 +435,7 @@ def run_evaluation(
             "version": version,
             "college_id": college_id,
             "timestamp": timestamp,
-            "total_queries": len(TEST_QUERIES),
+            "total_queries": len(COMPANY_TEST_QUERIES),
             "results": results,
         }, f, indent=2, ensure_ascii=False)
 
@@ -403,7 +450,7 @@ def run_evaluation(
             "version": version,
             "college_id": college_id,
             "timestamp": timestamp,
-            "total_queries": len(TEST_QUERIES),
+            "total_queries": len(COMPANY_TEST_QUERIES),
             "retriever_k": 4,
             "diagnostics": retrieval_diagnostics,
         }, f, indent=2, ensure_ascii=False)

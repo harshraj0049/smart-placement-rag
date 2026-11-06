@@ -1,0 +1,33 @@
+{
+  "added": [
+    "Registration_for_AntBox_Internship_Cum_PPO_Recruitment_Drive_for (3).pdf",
+    "Registration_for_BiteSpeed_Internship_cum_PPO_Recruitment_Drive.pdf",
+    "Registration_for_CME_Group_PPT_on_24th_July'2206_for_2027_Graduating.pdf",
+    "Registration_for_Engati_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+    "Registration_for_GyanSys_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+    "Registration_for_Infosys_Recruitment_Drive_2027_Graduating_Batch.pdf",
+    "Registration_for_Juspay_Technologies_P_Ltd_Internship_Cum_PPO_Recruitment (2).pdf",
+    "Registration_for_KFintechTechnologies_P_Ltd_Internship_Cum_PPO_Recruitment.pdf",
+    "Registration_for_KPIT_Recruitment_Drive_2027_Graduating_Batch.pdf",
+    "Registration_for_Lexmark_International_India_Xerox_Ltd_Internship.pdf",
+    "Registration_for_Mu_Sigma_Recruitment_Drive_for_2027_Graduating.pdf",
+    "Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf",
+    "Registration_for_Osfin_ai_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+    "Registration_for_Pibit_ai_Internship_cum_PPO_Recruitment_Drive_for.pdf",
+    "Registration_for_PixelCompute_Internship_Cum_PPO_Recruitment_Drive.pdf",
+    "Registration_for_Recrivio_Internship_cum_PPO_Recruitment_Drive_2027.pdf",
+    "Registration_for_Tredence_Recruitment_Drive_2027_Graduating_Batch.pdf",
+    "Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf",
+    "Registration_for_Zen_Data_Shastra_Recruitment_Drive_for_2027_Graduating.pdf"
+  ],
+  "updated": [],
+  "skipped": [],
+  "empty": [],
+  "unparsed": [],
+  "failed": [
+    {
+      "file": "Registration_for_Springworks_Internship_Recruitment_Drive_for_2026.pdf",
+      "error": "TextEncodeInput must be Union[TextInputSequence, Tuple[InputSequence, InputSequence]]"
+    }
+  ]
+}

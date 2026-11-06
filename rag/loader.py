@@ -18,9 +18,9 @@ def pdf_load_and_chunk(pdf_path:str,chunk_size:int =500,chunk_overlap:int =50):
     chunks=splitter.split_documents(docs)
 
     print(f"Number of chunks : {len(chunks)}\n")
-    for i,chunk in enumerate(chunks):
+    '''for i,chunk in enumerate(chunks):
         print("chunk number",i,chunk.page_content[:100])
-        print("metadata",chunk.metadata) 
+        print("metadata",chunk.metadata) '''
 
     return chunks
 

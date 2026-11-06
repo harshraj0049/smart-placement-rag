@@ -1,0 +1,789 @@
+{
+  "version": "v2",
+  "college_id": "kiit",
+  "timestamp": "20261106_183837",
+  "total_queries": 31,
+  "results": [
+    {
+      "id": 1,
+      "category": "eligibility",
+      "question": "What is the exact CGPA requirement for the AntBox recruitment drive?",
+      "response": [
+        {
+          "type": "text",
+          "text": "The CGPA requirement for the AntBox recruitment drive is **6.00 or above CGPA in B.Tech** [Page 1 — Registration_for_AntBox_Internship_Cum_PPO_Recruitment_Drive_for (3).pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TPdcSa+qL0pjn3d9l99ylRY1h4Y24k7uuXXpZ6uUZR5CQSVcR0ejNFOyR24MH04G1/YUOrvTF93S9k0krN0MTlqW8fmkS3gIqNLmizNolAYI3+22G7MYLRto="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_AntBox_Internship_Cum_PPO_Recruitment_Drive_for (3).pdf",
+        "Page 1 — Registration_for_CME_Group_PPT_on_24th_July'2206_for_2027_Graduating.pdf",
+        "Page 1 — Registration_for_Pibit_ai_Internship_cum_PPO_Recruitment_Drive_for.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 2.37,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "category": "eligibility",
+      "question": "Which companies require an 80% or above throughout the entire academic career?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Based on the provided documents, the following company requires an 80% or above criterion throughout the academic career:\n\n* **PixelCompute Technologies** (for their Internship Cum PPO Recruitment Drive, specifying \"80% throughout the academic career\" and \"No Backlog\" for eligible B.Tech (CSE/CS&CE/CS&SE/IT) & MCA students) [Source: Page 1 — Registration_for_PixelCompute_Internship_Cum_PPO_Recruitment_Drive.pdf].\n\n*(Note: While Optimus Information also has an 80% criterion, it specifies 80% in 10th, 12th/Diploma, along with specific graduation/post-graduation marks and CGPA thresholds, rather than a blanket \"throughout the academic career\" rule) [Source: Page 1 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf].*",
+          "extras": {
+            "signature": "EmAKXgFpFH0TMpKHAgmWVYhISXaUehX6Z6LaBWzYFadeX+/3fj6lewkC36MHJqFUHoOvBVBzGjaGwqBNltOve1odKJyT4bxY0AvKWOtZKgrgq8l/KVRbTOForzWXbhaWXtY="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_GyanSys_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 1 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf",
+        "Page 1 — Registration_for_PixelCompute_Internship_Cum_PPO_Recruitment_Drive.pdf",
+        "Page 1 — Registration_for_Recrivio_Internship_cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 2 — Registration_for_Mu_Sigma_Recruitment_Drive_for_2027_Graduating.pdf",
+        "Page 2 — Registration_for_Tredence_Recruitment_Drive_2027_Graduating_Batch.pdf",
+        "Page 3 — Registration_for_Mu_Sigma_Recruitment_Drive_for_2027_Graduating.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.68,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "category": "eligibility",
+      "question": "If a student has an 8.0 CGPA, are they eligible to apply for Osfin.ai?",
+      "response": [
+        {
+          "type": "text",
+          "text": "No, they are not eligible to apply for Osfin.ai [Source: Page 1 — Registration_for_Osfin_ai_Internship_Cum_PPO_Recruitment_Drive_2027.pdf]. \n\nThe eligibility criteria for the Osfin.ai recruitment drive requires a CGPA of 8.50 or above in B.Tech, and an 8.0 CGPA falls below this threshold [Source: Page 1 — Registration_for_Osfin_ai_Internship_Cum_PPO_Recruitment_Drive_2027.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TADAHHaTz0GpxVQ5cMqMI8AvjoZ46Hxs8dYDh38Lix0DEUcNuULphhdP/3+4ZiPws69+ndjlz3k/m0bKnuCxkOG2isORo9dVGNBwL7nNbPs16m6X/gYsaU8Y="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Osfin_ai_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.24,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "category": "eligibility",
+      "question": "Does Infosys have a specific percentage cutoff for 10th and 12th grades?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Yes, Infosys has a specific percentage cutoff for 10th and 12th grades: an aggregate of 60% (including all subjects) is required in both 10th and 12th grades [Source: Page 1 — Registration_for_Infosys_Recruitment_Drive_2027_Graduating_Batch.pdf]. \n\nAdditionally, for Lateral Entry students, a 65% in Diploma is required [Source: Page 1 — Registration_for_Infosys_Recruitment_Drive_2027_Graduating_Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TXLPOD62JNmIcUPlM3kjunRKrg3z08GFsvasofeqe75uJs4Krfywscu9/3UUAjubXgYevE7zsbLRm/MpzV+Euj64hP8OnJKiePOUXpkyJKbdIaCP6uKPyYYQ="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Infosys_Recruitment_Drive_2027_Graduating_Batch.pdf",
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 2 — Registration_for_Juspay_Technologies_P_Ltd_Internship_Cum_PPO_Recruitment (2).pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.95,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "category": "eligibility",
+      "question": "Can a student with active backlogs apply for the BiteSpeed or Juspay drives?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Based on the provided documents:\n\n* **BiteSpeed Drive:** Yes, students with no backlogs are eligible (Eligibility Criteria: \"No Backlogs\") [Page 1 — Registration_for_BiteSpeed_Internship_cum_PPO_Recruitment_Drive.pdf]. \n* **Juspay Drive:** I don't have that information about Juspay, please contact the T&P cell.",
+          "extras": {
+            "signature": "EmAKXgFpFH0TxdGLwvKri8btnubMBRiMddfnm7r/1jijpXHpq6Zw1fikvheGEma59Yqb3HmUuUR4TVsAQI1oof9gJUv9FtUIZfeM4ZQnrETvVddTrbM/M6DegvxQRXQdRvc="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_BiteSpeed_Internship_cum_PPO_Recruitment_Drive.pdf",
+        "Page 1 — Registration_for_Mu_Sigma_Recruitment_Drive_for_2027_Graduating.pdf",
+        "Page 1 — Registration_for_Zen_Data_Shastra_Recruitment_Drive_for_2027_Graduating.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 3.4,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "category": "compensation",
+      "question": "What is the highest CTC offered by Juspay Technologies for the SDE role?",
+      "response": [
+        {
+          "type": "text",
+          "text": "The highest CTC offered by Juspay Technologies for the SDE role is **Rs. 27.00 Lakhs Per Annum** [Page 1 — Registration_for_Juspay_Technologies_P_Ltd_Internship_Cum_PPO_Recruitment (2).pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TiOIRxDXH/YdJyToz96//d8jcvelz5vVekaoH+sASuJJFIGcwQJdRj8nak/FW+RaCr02LJoeyRP9596T0I50e7kHRyplAHdrOIa6uW4mxvwTl4btcQYX7zQc="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_CME_Group_PPT_on_24th_July'2206_for_2027_Graduating.pdf",
+        "Page 1 — Registration_for_Juspay_Technologies_P_Ltd_Internship_Cum_PPO_Recruitment (2).pdf",
+        "Page 2 — Registration_for_Juspay_Technologies_P_Ltd_Internship_Cum_PPO_Recruitment (2).pdf",
+        "Page 2 — Registration_for_Tredence_Recruitment_Drive_2027_Graduating_Batch.pdf",
+        "Page 3 — Registration_for_Juspay_Technologies_P_Ltd_Internship_Cum_PPO_Recruitment (2).pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.53,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "category": "compensation",
+      "question": "How much joining bonus does Infosys offer for the Specialist Programmer L1 and L2 roles?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Based on the Infosys recruitment drive details, the joining bonuses are as follows:\n\n* **Specialist Programmer L1 (Trainee):** Offers a joining bonus of **INR 1 Lakh** (along with an INR 10 LPA CTC).\n* **Specialist Programmer L2 (Trainee):** The provided documents do not mention a joining bonus for this role (it specifies a CTC of INR 16 LPA, but does not list a joining bonus).\n\n[Source: Page 1 — Registration_for_Infosys_Recruitment_Drive_2027_Graduating_Batch.pdf]",
+          "extras": {
+            "signature": "EmAKXgFpFH0Tn1oNcTD5vrx934P1eEwunRz9Wm3H99Nsl8Z2ANErsfYROML0ibcXe2X9UojAYiHeZ8ulgNDahB/QAlnZUuA0+rfBkek9US16XD4IsuqU6F60rmFFEj+ilhg="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_GyanSys_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 1 — Registration_for_Infosys_Recruitment_Drive_2027_Graduating_Batch.pdf",
+        "Page 2 — Registration_for_Recrivio_Internship_cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.56,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "category": "compensation",
+      "question": "What is the detailed 4-year compensation structure for Mu Sigma?",
+      "response": [
+        {
+          "type": "text",
+          "text": "The detailed 4-year compensation structure for Mu Sigma (totaling 40 Lakhs compensation over 4 years) is as follows:\n\n* **"
+        },
+        {
+          "type": "text",
+          "text": "1st Year:** 5 LPA\n* **2nd Year:** 6.5 LPA\n* **3rd Year:** 12.5 LPA\n* **4th Year:** 16 LPA\n\n*(Note: The role also includes a 6-month probationary period, a 2-year service agreement, and a recovery clause of Rs. 10.00 Lakhs if a candidate chooses to leave within 24 months after probation.)*\n\n[Source: Page 1 — Registration_for_Mu_Sigma_Recruitment_Drive_for_2027_Graduating.pdf]",
+          "extras": {
+            "signature": "EmAKXgFpFH0TTzSMDDY7Ibqb/2Hzog7po0g4CG9PwQs0Zd07/9O/c9Tt8Xo08GrjRNmXTWlR0GXFiMyrqYTaI4F/6/n8Bj4B/MpbQARfm7DI6pgQSoK/wmqzGIIZR0dhZRg="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Mu_Sigma_Recruitment_Drive_for_2027_Graduating.pdf",
+        "Page 2 — Registration_for_Mu_Sigma_Recruitment_Drive_for_2027_Graduating.pdf",
+        "Page 2 — Registration_for_Osfin_ai_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 3 — Registration_for_Mu_Sigma_Recruitment_Drive_for_2027_Graduating.pdf"
+      ],
+      "latency_s": 2.36,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "category": "compensation",
+      "question": "How much is the internship stipend for CME Group before the PPO conversion?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Based on the provided documents, the internship/traineeship stipends for CME Group before PPO conversion are as follows:\n\n1. **Traineeship Period (at CME Lab, KIIT-DU):** Rs. 15,000 per month [Source: Page 1 — Registration_for_CME_Group_PPT_on_24th_July'2206_for_2027_Graduating.pdf].\n2. **Internship Period (5 to 6 months at their office in Bangalore, starting from Jan’2026):** Rs. 55,000 per month [Source: Page 1 — Registration_for_CME_Group_PPT_on_24th_July'2206_for_2027_Graduating.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TZXGbzjrEHAIi1gvNcYKbS4kDztd2FiGwqr7Kbqtae2z/GBgj87FaXhHdgsx9tja9wKIhGdTnzl0iUyGcNPFxuf35ejR24YQ02BZX+BsgsPzfi12FiGKrh6Y="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_AntBox_Internship_Cum_PPO_Recruitment_Drive_for (3).pdf",
+        "Page 1 — Registration_for_CME_Group_PPT_on_24th_July'2206_for_2027_Graduating.pdf",
+        "Page 1 — Registration_for_GyanSys_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 1 — Registration_for_PixelCompute_Internship_Cum_PPO_Recruitment_Drive.pdf"
+      ],
+      "latency_s": 2.26,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "category": "compensation",
+      "question": "What is the total CTC offered by Zen Data Shastra over the three-year period?",
+      "response": [
+        {
+          "type": "text",
+          "text": "The total CTC offered by Zen Data Shastra over the three-year bond period is **Rs. 21.00 Lakhs**.\n\n**Breakdown by Year:**\n* **Year 1:** Rs. 5.0 LPA (Fixed: Rs. 4.5 LPA, Variable: Rs. 0.5 LPA) [Page 1 — Registration_for_Zen_Data_Shastra_Recruitment_Drive_for_2027_Graduating.pdf]\n* **Year 2:** Rs. 7.0 LPA (Fixed: Rs. 6.25 LPA, Variable: Rs. 0.75 LPA) [Page 1 — Registration_for_Zen_Data_Shastra_Recruitment_Drive_for_2027_Graduating.pdf]\n* **Year 3:** Rs. 9.0 LPA (Fixed: Rs. 8.0 LPA, Variable: Rs. 1.0 LPA) [Page 1 — Registration_for_Zen_Data_Shastra_Recruitment_Drive_for_2027_Graduating.pdf]\n\n*(Calculation: 5.0 + 7.0 + 9.0 = 21.0 Lakhs)*",
+          "extras": {
+            "signature": "EmAKXgFpFH0T51iYXzqk19dHpR9E9QeE+HlDfMyPj1nuVTmJwzEmZ+QPt1HKyy1ROJbOzXMgYuYj8AbccmECD8wBzZ5+pbKMHe8ZtXDKbJfY/pPULV7pVwlqPptNPDmHOXI="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_GyanSys_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 1 — Registration_for_Zen_Data_Shastra_Recruitment_Drive_for_2027_Graduating.pdf",
+        "Page 2 — Registration_for_Zen_Data_Shastra_Recruitment_Drive_for_2027_Graduating.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 2.39,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "category": "roles_skills",
+      "question": "Which company is specifically hiring for a Forward Deployed Engineer Intern?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Engati is hiring for the Forward Deployed Engineer Intern profile [Source: Page 1 — Registration_for_Engati_Internship_Cum_PPO_Recruitment_Drive_2027.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TbbZzVP+be849T/c7GPV4yy0/pPCv3xs7YgWfDKnoVApGq6pr3uXRp5/YG9ZiKPEp+p1hxM1zSrankOQwukbcbTOMBlryExXVRcIcufo9ihd0uYr49W5TZ+c="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Engati_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 2 — Registration_for_Engati_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 3 — Registration_for_Recrivio_Internship_cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 4 — Registration_for_Recrivio_Internship_cum_PPO_Recruitment_Drive_2027.pdf"
+      ],
+      "latency_s": 1.53,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "category": "roles_skills",
+      "question": "What mandatory programming language requirement is needed for the Pibit.ai AI Internship?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Based on the recruitment drive details for Pibit.ai, candidates must have completed at least one internship involving Python [Source: Page 1 — Registration_for_Pibit_ai_Internship_cum_PPO_Recruitment_Drive_for.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TsQOPwQ+qy1k4oGN/CGWnlTvE3nqlha43Lo4/cigaCZsMWb3UEib7aIS44647+aVjk62vgZEahChG52m1zpwV2MJlDjBadX/XLsKxi/3I0V6a8vfLSWHb8/I="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Pibit_ai_Internship_cum_PPO_Recruitment_Drive_for.pdf",
+        "Page 2 — Registration_for_Engati_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 2 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf",
+        "Page 2 — Registration_for_Pibit_ai_Internship_cum_PPO_Recruitment_Drive_for.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.44,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "category": "roles_skills",
+      "question": "Which company is hiring for Mechanical Engineers and Embedded Hardware roles for EV subsystems?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Based on the provided documents, **Zaptics Research** is hiring for both Mechanical Engineers and Embedded Hardware roles for automotive/EV subsystems [Source: Page 1 — Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf]. \n\nSpecifically, the profiles offered for the 2027 graduating batch are:\n- **Mechanical Engineer:** For B.Tech (Mechanical/Mechatronics) students [Source: Page 1 — Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf].\n- **Embedded Hardware:** For B.Tech (EE/ETC/E&CSE/EEE) students, involving the design of robust electronic systems for automotive/EV/energy products [Source: Page 1, 3 — Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0Tm2t0rfBkBhXc6n8VH9SUf30BzuJ9t+n5VMA4ZM0ICp8+4FOiCZmMlAxT6kBuwHozhXsCad9wqqrgBhenXrCZi7aNZU1AW0rHRF6bTUiPdvSe+nNzIhdd0BY="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf",
+        "Page 2 — Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf",
+        "Page 3 — Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf",
+        "Page 4 — Registration_for_Recrivio_Internship_cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 4 — Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf"
+      ],
+      "latency_s": 1.96,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "category": "roles_skills",
+      "question": "Is knowledge of PureScript and functional programming required for Juspay?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Yes, a passion for programming and an interest in functional programming (FP) are listed as application requirements for Juspay [Page 2 — Registration_for_Juspay_Technologies_P_Ltd_Internship_Cum_PPO_Recruitment (2).pdf]. Additionally, the roles involve learning to craft user experiences and build APIs using PureScript and the Presto framework [Page 1 — Registration_for_Juspay_Technologies_P_Ltd_Internship_Cum_PPO_Recruitment (2).pdf, Page 2 — Registration_for_Juspay_Technologies_P_Ltd_Internship_Cum_PPO_Recruitment (2).pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TsCWENua1pXfmqxGuJ2gEy8ClDgTBb6TljSgcsGOjTZSf6zsc8his54kTf+64xrqn2v/GiwQO3VSp/3WJo+8b3KxmIC4lF3IAPOESJBvV/nbiHDmcxDJTWwU="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Juspay_Technologies_P_Ltd_Internship_Cum_PPO_Recruitment (2).pdf",
+        "Page 1 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf",
+        "Page 1 — Registration_for_Tredence_Recruitment_Drive_2027_Graduating_Batch.pdf",
+        "Page 2 — Registration_for_Juspay_Technologies_P_Ltd_Internship_Cum_PPO_Recruitment (2).pdf",
+        "Page 3 — Registration_for_Juspay_Technologies_P_Ltd_Internship_Cum_PPO_Recruitment (2).pdf"
+      ],
+      "latency_s": 1.84,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "category": "roles_skills",
+      "question": "What specific AI tools does Tredence expect candidates to use to expedite coding delivery?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Based on the provided documents, Tredence expects candidates to use AI tools such as Claude, GitHub Copilot, and other coding assistants to expedite delivery [Source: Page 2 — Registration_for_Tredence_Recruitment_Drive_2027_Graduating_Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0ThnZ0sjgzgIFm7VQjfeJL6JpFF5ncJjRtvPIoW03tuQvLUbABXoh964Eb810+qAzkGkEegj/ogZPOH/qe+DSquCaWRqiMHmIyl8/CxkZNNT8vdsYh1rAAuDI="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Engati_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 2 — Registration_for_Engati_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 2 — Registration_for_Osfin_ai_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 2 — Registration_for_Pibit_ai_Internship_cum_PPO_Recruitment_Drive_for.pdf",
+        "Page 2 — Registration_for_Tredence_Recruitment_Drive_2027_Graduating_Batch.pdf"
+      ],
+      "latency_s": 1.34,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "category": "agreements",
+      "question": "What is the financial penalty or recovery clause if I leave Mu Sigma within 24 months?",
+      "response": [
+        {
+          "type": "text",
+          "text": "If you choose to leave within 24 months after probation, a recovery clause of Rs. 10.00 Lakhs will be applicable [Page 1 — Registration_for_Mu_Sigma_Recruitment_Drive_for_2027_Graduating.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TVlDrEXi1TCcV1X9qsju+6uhuuN4Q/IYs/pM3/1TDE1mcNPvq6MBdTnfJrz64Zp7VQzYYWj9g5eVPZn1DoF6Uvg3w5QyC9ciW6CeCxySsX4N07MEFr86VpPk="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Mu_Sigma_Recruitment_Drive_for_2027_Graduating.pdf",
+        "Page 2 — Registration_for_Mu_Sigma_Recruitment_Drive_for_2027_Graduating.pdf",
+        "Page 3 — Registration_for_Mu_Sigma_Recruitment_Drive_for_2027_Graduating.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.24,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "category": "agreements",
+      "question": "How long is the mandatory service agreement for GyanSys?",
+      "response": [
+        {
+          "type": "text",
+          "text": "The mandatory service agreement for GyanSys is for 3 years [Source: Page 1 — Registration_for_GyanSys_Internship_Cum_PPO_Recruitment_Drive_2027.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TRE+WGfJ9J9JfrwY8Y3b2eKp26FTC+YsrTbTYEa3g4QFSSaI65YOZ+nwmL07SIysu/zqI6fIz9r0FQLXFcgKs5kD/GLm0kX9yhnroV7YRXGIGdThl4rxqLyY="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_GyanSys_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 1 — Registration_for_KPIT_Recruitment_Drive_2027_Graduating_Batch.pdf",
+        "Page 1 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf",
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 20.69,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "category": "agreements",
+      "question": "What are the exact terms of the indemnity agreement for Optimus Information?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Based on the retrieved documents, the terms of the indemnity (service) agreement for Optimus Information are as follows:\n\n- **Value:** Rs. 2 Lakhs [Source: Page 1 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf]\n- **Duration:** Applicable for a period of 2 years from the start of employment [Source: Page 1 & 2 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf].\n- **Signing Requirement:** Must be signed on or before the date of joining [Source: Page 2 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf].\n- **Effective Date:** It comes into effect from the date of commencement of employment at Optimus [Source: Page 2 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TUElpZo8juFFpx8+LW9ZfLM55TmPy9BqQXfpbsIJyUA5SDcFnthsWk1fnFo+3OW1chQplIfQ7kcKGASMntgBg0wUA40GQnEyke6dtKZxycMQJBMo4B4m3FEw="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_GyanSys_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 1 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf",
+        "Page 2 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf",
+        "Page 2 — Registration_for_Osfin_ai_Internship_Cum_PPO_Recruitment_Drive_2027.pdf"
+      ],
+      "latency_s": 1.71,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "category": "agreements",
+      "question": "Does KPIT enforce a service agreement, and if so, for how many years?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Yes, KPIT enforces a service agreement for a period of 2 years [Source: Page 1 — Registration_for_KPIT_Recruitment_Drive_2027_Graduating_Batch.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0ToiUbZ6WQV/mS6nEt9ANoTAloWtmq6PUg0NlpW157rXPf0mfxmBNx+WqecsAhMuMbPpjXoRWJRVSHcwB79M/JTAsacxwLGf4vuQOzVQoCo99dURkN1ou92H0="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_KPIT_Recruitment_Drive_2027_Graduating_Batch.pdf",
+        "Page 1 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf",
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 2 — Registration_for_Juspay_Technologies_P_Ltd_Internship_Cum_PPO_Recruitment (2).pdf"
+      ],
+      "latency_s": 1.59,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "category": "logistics",
+      "question": "Which company strictly requires a 1-minute video submission detailing past experiences during registration?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Based on the registration notice, the company that strictly requires a 1-minute video submission detailing past experiences, clubs or groups you have been a part of in college, and career goals during registration is **BiteSpeed** [Page 1 — Registration_for_BiteSpeed_Internship_cum_PPO_Recruitment_Drive.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TEV1JpVFJDXBdGO7sgFKt+v1ErSyHszVtXa9Pd878qDZvJKhNvOc1dMTUbcWdnc4OPkPDslruMboGdgnmHh+pVe5bGtZmSdIfNLussJ/WyJ84KnS5czqW6iA="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_AntBox_Internship_Cum_PPO_Recruitment_Drive_for (3).pdf",
+        "Page 1 — Registration_for_BiteSpeed_Internship_cum_PPO_Recruitment_Drive.pdf",
+        "Page 1 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf",
+        "Page 3 — Registration_for_Recrivio_Internship_cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 4 — Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 4.41,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "category": "logistics",
+      "question": "What are the strict browser and device requirements for the Springworks AI interview?",
+      "response": [
+        {
+          "type": "text",
+          "text": "I don't have that information, please contact the T&P cell.",
+          "extras": {
+            "signature": "EmAKXgFpFH0Tfh1YNOh8zPv1niiGNeFo6kncTPpzaIvPhaTjNQwoX0PdWWxESRaIILJpvYfSkSucFJ9HLAsF6VqX2YuV/dUxUqqSpkq85EvdlRbJ680UW8b9aJVTIYWzzbA="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Engati_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 2 — Registration_for_Engati_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 2 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf",
+        "Page 2 — Registration_for_Osfin_ai_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 3 — Registration_for_KFintechTechnologies_P_Ltd_Internship_Cum_PPO_Recruitment.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.35,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "category": "logistics",
+      "question": "Which company explicitly states that they will take strict action against absentees who fail to attend the physical drive?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Based on the provided documents, **Lexmark International India Xerox Ltd Internship** explicitly states that \"If any absentees are found after shortlisting, strict action may be taken against them\" for their physical campus process.\n\n[Source: Page 1 — Registration_for_Lexmark_International_India_Xerox_Ltd_Internship.pdf]",
+          "extras": {
+            "signature": "EmAKXgFpFH0TpZ9iV+Wuu/BmB55DCwOe92UVag1rOiqt5ISk8L1yIeKCXbelLF5jeE0VotHzL5qd2iSwTVHYowKyOO7sDDnRNrKYkdGW2Ha48QjnKaA6X12l4oqgE2Lhu/s="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Lexmark_International_India_Xerox_Ltd_Internship.pdf",
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.21,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "category": "logistics",
+      "question": "Who conducts the initial shortlisting for the Recrivio drive before the company steps in?",
+      "response": [
+        {
+          "type": "text",
+          "text": "The initial shortlisting for the Recriv"
+        },
+        {
+          "type": "text",
+          "text": "io drive is conducted by the T&P (Training and Placement) department based on the exit score of Kareer School [Page 1 — Registration_for_Recrivio_Internship_cum_PPO_Recruitment_Drive_2027.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0T8sKZ9MoVZ/CKkn/JW5cZ9pG7xPmbWyOdJ2sxo6js0mJ0RqMMMc4xr72cNyR9kR6KldbIzv02e+oZNZru0kGZGNc1C5606X8LKr1Cp1NGQFWgQ0egdMdPsFQ="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Infosys_Recruitment_Drive_2027_Graduating_Batch.pdf",
+        "Page 1 — Registration_for_Pibit_ai_Internship_cum_PPO_Recruitment_Drive_for.pdf",
+        "Page 1 — Registration_for_Recrivio_Internship_cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 2 — Registration_for_BiteSpeed_Internship_cum_PPO_Recruitment_Drive.pdf",
+        "Page 2 — Registration_for_Pibit_ai_Internship_cum_PPO_Recruitment_Drive_for.pdf",
+        "Page 2 — Registration_for_Recrivio_Internship_cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 3 — Registration_for_Recrivio_Internship_cum_PPO_Recruitment_Drive_2027.pdf"
+      ],
+      "latency_s": 4.03,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "category": "multi_hop",
+      "question": "Which companies offer a stipend of Rs. 30,000 or more per month during the internship phase?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Based on the provided documents, the companies that offer a stipend of Rs. 30,000 or more per month during their internship phase are:\n\n1. **PixelCompute**: Rs. 42,000 per month during the 7th/3rd semester, and Rs. 60,000 per month during the 8th/4th semester [Source: Page 1 — Registration_for_PixelCompute_Internship_Cum_PPO_Recruitment_Drive.pdf].\n2. **CME Group**: Rs. 55,000 per month during the 5 to 6 months internship at their Bangalore office [Source: Page 1 — Registration_for_CME_Group_PPT_on_24th_July'2206_for_2027_Graduating.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TTFtcRgmLNZ4g4QGQhewRr8bPkUNHSiVrvOaJ5ayhW4jfMyWYQWRPQ0RAdgMdEEWCgkL537SDBdmhaXPignYvQImdJ/oCTcfrgOR/4GAiu34uIXebFDcbo9g="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_AntBox_Internship_Cum_PPO_Recruitment_Drive_for (3).pdf",
+        "Page 1 — Registration_for_BiteSpeed_Internship_cum_PPO_Recruitment_Drive.pdf",
+        "Page 1 — Registration_for_CME_Group_PPT_on_24th_July'2206_for_2027_Graduating.pdf",
+        "Page 1 — Registration_for_KFintechTechnologies_P_Ltd_Internship_Cum_PPO_Recruitment.pdf",
+        "Page 1 — Registration_for_PixelCompute_Internship_Cum_PPO_Recruitment_Drive.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.65,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "category": "multi_hop",
+      "question": "If I am an Electrical Engineering (EE) student, which hardware or embedded companies can I apply to?",
+      "response": [
+        {
+          "type": "text",
+          "text": "Based on the provided documents, there is no explicit list specifying by name which hardware or embedded companies an Electrical Engineering (EE) student can apply to. \n\nHowever, regarding eligibility rules for EE students (who belong to CORE branches: Civil, EE, MECH, Mechatronics, Automobile, Aerospace, and Chemical) [Page 4 — T&P Regulations_2027 Batch.pdf]:\n* You can avail a maximum of **two offers from core companies** [Page 4 — T&P Regulations_2027 Batch.pdf].\n* If you receive your **first offer in a core company/core profile**, you **shall not be allowed to participate in IT/ITES companies** [Page 4 — T&P Regulations_2027 Batch.pdf].\n* If you have a core offer, you are allowed to participate in further core companies that have a CTC **more than or equal to double of the existing CTC** [Page 4 — T&P Regulations_2027 Batch.pdf].\n* If you receive your **first offer in an IT company**, you are allowed to participate in core companies until you get one offer in a core company [Page 4 — T&P Regulations_2027 Batch.pdf].\n* You can also avail a maximum of **one IT/ITES offer** [Page 4 — T&P Regulations_2027 Batch.pdf].\n* If you register for a campus process, you must mandatorily participate in the drive, or you will be disqualified from attending the next campus drive [Page 4 — T&P Regulations_2027 Batch.pdf].\n\nFor specific company names or drives open to your branch, please contact the T&P cell.",
+          "extras": {
+            "signature": "EmAKXgFpFH0TkdgwqdZepGXlLmzGNnNAOr9eOBz8YnHutzaTtZfwNP5c0dM/0qKxgEh5uSRT0cd9x36yuq7Pf1JgRQAQI9+hwcF6DAYVazq/p6cqm9ZufmRAl7YfZg6v89U="
+          }
+        }
+      ],
+      "sources": [
+        "Page 2 — Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf",
+        "Page 3 — Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 2.98,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "category": "multi_hop",
+      "question": "Which roles offer a base CTC of over 15 LPA immediately upon joining?",
+      "response": [
+        {
+          "type": "text",
+          "text": "I don't have that information, please contact the T&P cell.",
+          "extras": {
+            "signature": "EmAKXgFpFH0T8ISLH5I6J+U5qF3FWOoYYKsTfhdZRwSj1Xqg2hfg0RwkZ9fiPWMdRnkW0joY27Hrelld8slweMhKdjaMHZ/Z95+rUv6Q1yrsPpIVgPsIaynkhlUTpeBfqNE="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Mu_Sigma_Recruitment_Drive_for_2027_Graduating.pdf",
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.47,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "category": "hallucination",
+      "question": "What is the minimum CGPA required to apply for the Google Software Engineering role?",
+      "response": [
+        {
+          "type": "text",
+          "text": "I don't have that information, please contact the T&P cell.",
+          "extras": {
+            "signature": "EmAKXgFpFH0T1kt4xVnT+20OLI6Pw17KzfqFibGxnpCfDzLE6QyFgloG9IbRXENCjVq0lVuWduYVCXtWMhBDdpxbIsAdbcvGauZq5gB7Ewy0c6muF9HKDZ92gbNf3yQVQoM="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_GyanSys_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 1 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf",
+        "Page 1 — T&P Regulations_2027 Batch.pdf",
+        "Page 2 — T&P Regulations_2027 Batch.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.33,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "category": "hallucination",
+      "question": "Is the BiteSpeed internship completely remote?",
+      "response": [
+        {
+          "type": "text",
+          "text": "No, the BiteSpeed internship is not remote. The joining location for the BiteSpeed Internship cum PPO Recruitment Drive is Bangalore [Page 1 — Registration_for_BiteSpeed_Internship_cum_PPO_Recruitment_Drive.pdf].",
+          "extras": {
+            "signature": "EmAKXgFpFH0TMvIghDllTkLeYLp/vxJoAigVdLQ9/Q5SVWnVZPJR5/JSePU8BrA/R+u4ObqlAv1Y8ZgRLQlvUDGnfj3gtngKmD1rfKtJDGntrcr+LYct4LoyADJK0FowlDw="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_BiteSpeed_Internship_cum_PPO_Recruitment_Drive.pdf",
+        "Page 1 — Registration_for_KFintechTechnologies_P_Ltd_Internship_Cum_PPO_Recruitment.pdf",
+        "Page 2 — Registration_for_BiteSpeed_Internship_cum_PPO_Recruitment_Drive.pdf",
+        "Page 3 — Registration_for_Recrivio_Internship_cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 3 — T&P Regulations_2027 Batch.pdf",
+        "Page 5 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.23,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "category": "hallucination",
+      "question": "Can I use Perplexity or ChatGPT during the Springworks AI interview if I get stuck?",
+      "response": [
+        {
+          "type": "text",
+          "text": "I don't have that information, please contact the T&P cell.",
+          "extras": {
+            "signature": "EmAKXgFpFH0TZ1CAWf0jyxioAXrT4QOYywaVxN3tC/h6s+90Hwn2Q9CUJL91xI3csKmbcT4dr3rlBkwgUZpidm/hOwNT+gXpsLlwd+WFcFusEPR99k49tP1fqUWFWGqVxik="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Engati_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 2 — Registration_for_Engati_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 2 — Registration_for_Osfin_ai_Internship_Cum_PPO_Recruitment_Drive_2027.pdf",
+        "Page 2 — Registration_for_Pibit_ai_Internship_cum_PPO_Recruitment_Drive_for.pdf",
+        "Page 4 — T&P Regulations_2027 Batch.pdf",
+        "Page 6 — T&P Regulations_2027 Batch.pdf"
+      ],
+      "latency_s": 1.45,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "category": "hallucination",
+      "question": "What is the signing bonus for the Zaptics Research Embedded Software role?",
+      "response": [
+        {
+          "type": "text",
+          "text": "I don't have that information, please contact the T&P cell.",
+          "extras": {
+            "signature": "EmAKXgFpFH0TpTo7xMr1SdTvuJUV4Mpd9CASIp52Uxw3tBw7fv1x3Rc/z6rMZFMqgW1GoEvhKiXW0jKRAInVLxEtmZN1fq+G9L0oWKH0vkzF9W71PK56yIhlCm8ZEhGkDWo="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf",
+        "Page 3 — Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf",
+        "Page 4 — Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf",
+        "Page 5 — Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf"
+      ],
+      "latency_s": 1.44,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "category": "hallucination",
+      "question": "Does Optimus Information allow candidates to skip the English proficiency written test?",
+      "response": [
+        {
+          "type": "text",
+          "text": "No. According to the recruitment process outlined for Optimus Information, candidates are required to go through Stage 2: Written Test, which assesses written English proficiency and core values [Page 1 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf]. The documents do not mention any provision allowing candidates to skip this test.",
+          "extras": {
+            "signature": "EmAKXgFpFH0ThF+3dhc7k3nLgzfhqJaLtcS3WbqM+hEJwk+e+b07C0mftRYtK04My+alc5izT7xvH2rJa5sGNb3kHMh9rO5wz+OQGnXMPtVfvV7jAGe0NQYHh3HTrlWGE6U="
+          }
+        }
+      ],
+      "sources": [
+        "Page 1 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf",
+        "Page 2 — Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf"
+      ],
+      "latency_s": 1.55,
+      "correct": null,
+      "hallucinated": null,
+      "notes": ""
+    }
+  ]
+}
