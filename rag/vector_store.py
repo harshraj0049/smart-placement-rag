@@ -1,32 +1,24 @@
 from langchain_chroma import Chroma
 import hashlib
 
-def create_vector_store(chunks,embeddings,college_id:str="kiit",document_name:str="unknown"):
-    collection_name=f"placement_{college_id}"
-    persist_dir="./chroma_db"
-
-    doc_id=hashlib.md5(document_name.encode()).hexdigest()
-    vector_store=Chroma( 
-        collection_name=collection_name,
+def upsert_document(chunks, embeddings, college_id, document_id, content_hash):
+    vector_store = Chroma(
+        collection_name=f"placement_{college_id}",
         embedding_function=embeddings,
-        persist_directory=persist_dir
-    ) 
-
-    existing=vector_store.get(where={"document_id":doc_id})
-    if len(existing['ids']) >0:
-        print(f"Document '{document_name}' already exists with {len(existing['ids'])} chunks. Skipping.")
-        return vector_store
-
-    for chunk in chunks:
-        chunk.metadata["college_id"]=college_id
-        chunk.metadata["document_name"]=document_name
-        chunk.metadata["document_id"]=doc_id 
-    
-    vector_store.add_documents(documents=chunks)
-
-    
-    print(f"created new collection '{collection_name}' with {vector_store._collection.count()} chunks")
-    return vector_store
+        persist_directory="./chroma_db",
+    )
+    existing = vector_store.get(where={"document_id": document_id})
+    status = "added"
+    if existing["ids"]:
+        if existing["metadatas"][0].get("content_hash") == content_hash:
+            return "skipped"
+        vector_store.delete(ids=existing["ids"])
+        status = "updated"
+    vector_store.add_documents(
+        documents=chunks,
+        ids=[c.metadata["chunk_id"] for c in chunks],   # stable chunk ids
+    )
+    return status
 
 def get_vector_store(embeddings,college_id:str="kiit"):
     collection_name=f"placement_{college_id}"
