@@ -28,11 +28,6 @@ class NoticeType(str, Enum):
     update = "update"
     general = "general"
 
-# inside DocumentMetadata, add:
-    job_role: Optional[str] = Field(default=None, max_length=100)
-# and add "job_role" to the cleaning validator:  @field_validator("company", "title", "job_role", mode="before")
-
-
 class DocumentMetadata(BaseModel):
     """The contract between the admin's form and the backend."""
     doc_type: DocType
@@ -41,8 +36,9 @@ class DocumentMetadata(BaseModel):
     notice_type: Optional[NoticeType] = None
     title: Optional[str] = Field(default=None, max_length=120)
     notice_date: Optional[date] = None
+    job_role: Optional[str] = Field(default=None, max_length=100)
 
-    @field_validator("company", "title", mode="before")
+    @field_validator("company", "title", "job_role", mode="before")
     @classmethod
     def clean(cls, v):
         if v is None:
@@ -69,7 +65,7 @@ class IngestResult(BaseModel):
 
 
 def ingest_document(file_path, original_filename: str, meta: DocumentMetadata,
-                    college_id: str, em) -> IngestResult:
+                    college_id: str, em, persist_dir: str = "./chroma_db") -> IngestResult:
     path = Path(file_path)
     raw = path.read_bytes()
     if len(raw) > MAX_PDF_BYTES:
@@ -128,6 +124,6 @@ def ingest_document(file_path, original_filename: str, meta: DocumentMetadata,
                       "chunk_index": i, "chunk_id": f"{document_id}:{i}"}
         c.page_content = f"{header}\n{c.page_content}"
 
-    status = upsert_document(chunks, em, college_id, document_id, file_hash)
+    status = upsert_document(chunks, em, college_id, document_id, file_hash, persist_dir=persist_dir)
     return IngestResult(status=status, document_id=document_id,
                         document_name=document_name, chunks=len(chunks))

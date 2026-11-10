@@ -1,12 +1,19 @@
 from langchain_chroma import Chroma
-import hashlib
 
-def upsert_document(chunks, embeddings, college_id, document_id, content_hash):
-    vector_store = Chroma(
+DEFAULT_PERSIST_DIR = "./chroma_db"
+
+
+def _store(embeddings, college_id: str, persist_dir: str = DEFAULT_PERSIST_DIR) -> Chroma:
+    return Chroma(
         collection_name=f"placement_{college_id}",
         embedding_function=embeddings,
-        persist_directory="./chroma_db",
+        persist_directory=persist_dir,
     )
+
+
+def upsert_document(chunks, embeddings, college_id, document_id, content_hash,
+                    persist_dir: str = DEFAULT_PERSIST_DIR):
+    vector_store = _store(embeddings, college_id, persist_dir)
     existing = vector_store.get(where={"document_id": document_id})
     status = "added"
     if existing["ids"]:
@@ -20,14 +27,9 @@ def upsert_document(chunks, embeddings, college_id, document_id, content_hash):
     )
     return status
 
-def get_vector_store(embeddings,college_id:str="kiit"):
-    collection_name=f"placement_{college_id}"
-    persist_dir="./chroma_db"
-    vector_store=Chroma(
-        collection_name=collection_name,
-        embedding_function=embeddings,
-        persist_directory=persist_dir
-    )
-    print(f"loading existing collection :{collection_name} with {vector_store._collection.count()} chunks")
-    return vector_store
 
+def get_vector_store(embeddings, college_id: str = "kiit", persist_dir: str = DEFAULT_PERSIST_DIR):
+    vector_store = _store(embeddings, college_id, persist_dir)
+    print(f"loading existing collection: placement_{college_id} "
+          f"with {vector_store._collection.count()} chunks")
+    return vector_store
