@@ -17,5 +17,6 @@ dependencies = [
     "pypdf>=6.14.2",
     "python-dotenv>=1.2.2",
     "rank-bm25>=0.2.2",
+    "rapidfuzz>=3.0",
     "sentence-transformers>=2.2.2",
 ]

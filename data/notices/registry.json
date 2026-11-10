@@ -1,0 +1,39 @@
+{
+  "_comment": "One entry per notice PDF. company = the canonical display name; it is lowercased into the 'company' metadata field at ingestion. aliases = other names students type (fuzzy matching covers typos).",
+  "notices": {
+    "Registration_for_AntBox_Internship_Cum_PPO_Recruitment_Drive_for (3).pdf": {"company": "AntBox", "notice_type": "registration", "job_role": "GTM Growth Executive", "notice_date": "2026-06-11"},
+    "Registration_for_BiteSpeed_Internship_cum_PPO_Recruitment_Drive.pdf": {"company": "BiteSpeed", "notice_type": "registration", "job_role": "Business Development Representative Intern", "notice_date": "2026-06-29"},
+    "Registration_for_CME_Group_PPT_on_24th_July'2206_for_2027_Graduating.pdf": {"company": "CME Group", "notice_type": "ppt", "notice_date": "2026-07-21"},
+    "Registration_for_Engati_Internship_Cum_PPO_Recruitment_Drive_2027.pdf": {"company": "Engati", "notice_type": "registration", "job_role": "Forward Deployed Engineer Intern", "notice_date": "2026-05-29"},
+    "Registration_for_GyanSys_Internship_Cum_PPO_Recruitment_Drive_2027.pdf": {"company": "GyanSys", "notice_type": "registration", "notice_date": "2026-07-14"},
+    "Registration_for_Infosys_Recruitment_Drive_2027_Graduating_Batch.pdf": {"company": "Infosys", "notice_type": "registration", "job_role": "Specialist Programmer / Digital Specialist Engineer", "notice_date": "2026-07-07"},
+    "Registration_for_Juspay_Technologies_P_Ltd_Internship_Cum_PPO_Recruitment (2).pdf": {"company": "Juspay", "notice_type": "registration", "job_role": "SDE in Front End & Back End", "notice_date": "2026-06-22"},
+    "Registration_for_KFintechTechnologies_P_Ltd_Internship_Cum_PPO_Recruitment.pdf": {"company": "KFintech", "notice_type": "registration", "job_role": "Software Intern", "notice_date": "2026-06-22"},
+    "Registration_for_KPIT_Recruitment_Drive_2027_Graduating_Batch.pdf": {"company": "KPIT", "notice_type": "registration", "job_role": "Associate Engineer", "notice_date": "2026-07-22"},
+    "Registration_for_Lexmark_International_India_Xerox_Ltd_Internship.pdf": {"company": "Lexmark", "notice_type": "registration", "job_role": "Intern", "notice_date": "2026-06-01"},
+    "Registration_for_Mu_Sigma_Recruitment_Drive_for_2027_Graduating.pdf": {"company": "Mu Sigma", "notice_type": "registration", "job_role": "Trainee Decision Scientist", "notice_date": "2026-05-27"},
+    "Registration_for_Optimus_Information_for_Internship_cum_PPO_Recruitment.pdf": {"company": "Optimus Information", "notice_type": "registration", "job_role": "Software Engineer Intern", "notice_date": "2026-06-13"},
+    "Registration_for_Osfin_ai_Internship_Cum_PPO_Recruitment_Drive_2027.pdf": {"company": "Osfin.ai", "notice_type": "registration", "job_role": "Data Analyst Intern", "notice_date": "2026-07-01"},
+    "Registration_for_Pibit_ai_Internship_cum_PPO_Recruitment_Drive_for.pdf": {"company": "Pibit.ai", "notice_type": "registration", "job_role": "AI Intern", "notice_date": "2026-06-05"},
+    "Registration_for_PixelCompute_Internship_Cum_PPO_Recruitment_Drive.pdf": {"company": "PixelCompute", "notice_type": "registration", "job_role": "Full-Stack Developer / Automation Engineer", "notice_date": "2026-07-04"},
+    "Registration_for_Recrivio_Internship_cum_PPO_Recruitment_Drive_2027.pdf": {"company": "Recrivio", "notice_type": "registration", "job_role": "GTM Consultant Intern / Talent Consultant Intern", "notice_date": "2026-06-24"},
+    "Registration_for_Springworks_Internship_Recruitment_Drive_for_2026.pdf": {"company": "Springworks", "notice_type": "registration", "job_role": "Operations Intern", "notice_date": "2026-06-09"},
+    "Registration_for_Tredence_Recruitment_Drive_2027_Graduating_Batch.pdf": {"company": "Tredence", "notice_type": "registration", "job_role": "Data Engineer (Analyst)", "notice_date": "2026-06-09"},
+    "Registration_for_Zaptics_Research_Internship_Cum_PPO_Recruitment.pdf": {"company": "Zaptics Research", "notice_type": "registration", "notice_date": "2026-07-13"},
+    "Registration_for_Zen_Data_Shastra_Recruitment_Drive_for_2027_Graduating.pdf": {"company": "Zen Data Shastra", "notice_type": "registration", "job_role": "Associate Business Analyst", "notice_date": "2026-07-14"}
+  },
+  "aliases": {
+    "mu sigma": ["musigma", "mu-sigma"],
+    "osfin.ai": ["osfin"],
+    "pibit.ai": ["pibit"],
+    "juspay": ["juspay technologies"],
+    "kfintech": ["kfin", "kfin technologies", "kfintech technologies"],
+    "lexmark": ["xerox", "lexmark international"],
+    "optimus information": ["optimus"],
+    "tredence": ["tredence analytics"],
+    "zen data shastra": ["zds", "zendata shastra"],
+    "zaptics research": ["zaptics"],
+    "cme group": ["cme"],
+    "pixelcompute": ["pixel compute", "pixelcompute technologies"]
+  }
+}

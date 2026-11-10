@@ -11,4 +11,5 @@ sentence-transformers
 rank-bm25
 pypdf
 google-generativeai
-chromadb
+rapidfuzz
+pytest
