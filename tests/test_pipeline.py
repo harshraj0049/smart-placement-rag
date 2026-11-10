@@ -266,3 +266,29 @@ def test_compare_runs_and_router_is_pure(retriever, companies):
             assert r["router"]["purity"] == 1.0, r["id"]
     text = report(rows)
     assert "company_rules" in text and "ALL" in text
+
+
+# ---------------------------------------------------------------- metadata contract
+def test_batch_filter_and_faq_docs():
+    from langchain_core.documents import Document
+    em = FakeEmbeddings()
+    s = get_vector_store(em, persist_dir=tempfile.mkdtemp())
+    s.add_documents([
+        Document(page_content="Rule: you cannot reject an offer.", metadata={"doc_type": "tnp_rules", "batch": "2027"}),
+        Document(page_content="FAQ: offer letters arrive by email.", metadata={"doc_type": "placement_faq", "batch": "2027"}),
+        Document(page_content="Juspay CTC 27 LPA", metadata={"doc_type": "company_notice", "batch": "2027",
+                                                         "company": "juspay", "company_display": "Juspay"}),
+        Document(page_content="Juspay CTC 30 LPA", metadata={"doc_type": "company_notice", "batch": "2028",
+                                                         "company": "juspay", "company_display": "Juspay"}),
+    ], ids=["r", "f", "j27", "j28"])
+    r27 = PlacementRetriever(s, k=4, batch="2027")
+    assert {d.metadata["doc_type"] for d in r27.search_rules("offer letter email")} == {"tnp_rules", "placement_faq"}
+    assert [d.page_content for d in r27.search_company("ctc", "juspay")] == ["Juspay CTC 27 LPA"]
+    assert len(PlacementRetriever(s, k=4).search_company("ctc", "juspay")) == 2      # no batch = all
+    assert PlacementRetriever(s, k=4, batch="2029").list_companies() == {}
+
+
+def test_citation_pages_are_one_based():
+    from langchain_core.documents import Document
+    from rag.answer import source_label
+    assert source_label(Document(page_content="x", metadata={"page": 0, "document_name": "a.pdf"})) == "Page 1 — a.pdf"

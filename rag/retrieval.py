@@ -21,6 +21,8 @@ from langchain_community.retrievers import BM25Retriever
 from langchain_core.documents import Document
 
 RULES = "tnp_rules"
+FAQ = "placement_faq"
+UNIVERSITY_DOCS = [RULES, FAQ]          # everything that is not a company notice
 NOTICE = "company_notice"
 
 
@@ -58,8 +60,9 @@ class PlacementRetriever:
     """Filtered hybrid search over one college's collection."""
 
     def __init__(self, store: Chroma, k: int = 4, fetch_k: int = 8,
-                 weights: tuple[float, float] = (0.5, 0.5)):
+                 weights: tuple[float, float] = (0.5, 0.5), batch: Optional[str] = None):
         self.store = store
+        self.batch = batch            # e.g. "2027"; None = all batches in the collection
         self.k = k                    # results returned per search
         self.fetch_k = fetch_k        # candidates fetched per side before fusion
         self.weights = list(weights)
@@ -96,22 +99,26 @@ class PlacementRetriever:
         return fused[:k]
 
     # ---------- the tools the router calls ----------
+    def _where(self, **conditions) -> Optional[dict]:
+        return build_where(batch=self.batch, **conditions)
+
     def search_rules(self, query: str, k: Optional[int] = None) -> list[Document]:
-        return self.search(query, build_where(doc_type=RULES), k)
+        """T&P rules and placement FAQs (all university-level documents)."""
+        return self.search(query, self._where(doc_type=UNIVERSITY_DOCS), k)
 
     def search_company(self, query: str, company: str, k: Optional[int] = None) -> list[Document]:
         """`company` must be the stored (lowercase) value; resolve user wording with CompanyNormalizer first."""
-        return self.search(query, build_where(doc_type=NOTICE, company=company), k)
+        return self.search(query, self._where(doc_type=NOTICE, company=company), k)
 
     def search_notices(self, query: str, k: Optional[int] = None) -> list[Document]:
         """All company notices, no company filter (used for open questions across companies)."""
-        return self.search(query, build_where(doc_type=NOTICE), k)
+        return self.search(query, self._where(doc_type=NOTICE), k)
 
     def search_all(self, query: str, k: Optional[int] = None) -> list[Document]:
-        """Unfiltered hybrid search: the baseline, and the fallback when routing fails."""
-        return self.search(query, None, k)
+        """No doc_type/company filter: the baseline, and the fallback when routing fails."""
+        return self.search(query, self._where(), k)
 
     def list_companies(self) -> dict[str, str]:
         """Stored company value -> display name, e.g. {'osfin.ai': 'Osfin.ai'}."""
-        metas = self.store.get(where={"doc_type": NOTICE}, include=["metadatas"])["metadatas"]
+        metas = self.store.get(where=self._where(doc_type=NOTICE), include=["metadatas"])["metadatas"]
         return {m["company"]: m.get("company_display", m["company"]) for m in metas if "company" in m}

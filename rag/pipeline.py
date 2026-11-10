@@ -37,14 +37,14 @@ def route_summary(r: RouteResult) -> dict:
 
 
 class PlacementRAG:
-    def __init__(self, store, router_llm, answer_llm, k: int = 4):
-        self.retriever = PlacementRetriever(store, k=k)
+    def __init__(self, store, router_llm, answer_llm, k: int = 4, batch: Optional[str] = None):
+        self.retriever = PlacementRetriever(store, k=k, batch=batch)
         self.router = Router(self.retriever, make_llm_route_fn(router_llm), k=k)
         self.answer_llm = answer_llm
 
     @classmethod
     def from_env(cls, college_id: str = "kiit", persist_dir: str = DEFAULT_PERSIST_DIR,
-                 em=None, k: int = 4) -> "PlacementRAG":
+                 em=None, k: int = 4, batch: Optional[str] = None) -> "PlacementRAG":
         from langchain.chat_models import init_chat_model
         load_dotenv()
         if os.getenv("GEMINI_API_KEY") and not os.getenv("GOOGLE_API_KEY"):
@@ -55,7 +55,8 @@ class PlacementRAG:
         store = get_vector_store(em, college_id, persist_dir)
         router_llm = init_chat_model(os.getenv("ROUTER_MODEL", DEFAULT_ROUTER_MODEL), temperature=0)
         answer_llm = init_chat_model(os.getenv("ANSWER_MODEL", DEFAULT_ANSWER_MODEL), temperature=0)
-        return cls(store, router_llm, answer_llm, k=k)
+        batch = batch or os.getenv("BATCH") or None     # e.g. BATCH=2027 in .env; unset = all batches
+        return cls(store, router_llm, answer_llm, k=k, batch=batch)
 
     def refresh(self) -> None:
         """Call after ingesting new documents."""

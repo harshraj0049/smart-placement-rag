@@ -12,13 +12,13 @@ pip install -r requirements.txt          # adds rapidfuzz, pytest
 python -m rag.ingest_all --reset         # once: rebuild chroma_db with the metadata schema
 python main.py "I have a 6 LPA offer, can I sit for Juspay?"
 python main.py --debug "Compare Mu Sigma and Tredence CTC"     # also prints route + chunks
-python -m pytest -q tests                # 30 offline tests, no API key needed
+python -m pytest -q tests                # 32 offline tests, no API key needed
 python -m evaluation.compare --no-answers   # baseline vs router: routing + retrieval only
 python -m evaluation.compare --sleep 4      # full run with answers (free tier: keep the sleep)
 ```
 
 `.env` needs `GEMINI_API_KEY`. Models default to `google_genai:gemini-3.5-flash-lite`;
-override with `ROUTER_MODEL` / `ANSWER_MODEL`.
+override with `ROUTER_MODEL` / `ANSWER_MODEL`. Set `BATCH=2027` to restrict every search to one graduating batch.
 
 ## How a question flows
 
@@ -34,7 +34,7 @@ question
 
 | Route | Searches | Example |
 |---|---|---|
-| rules | T&P rules only | Can I reject an offer? |
+| rules | T&P rules + placement FAQs | Can I reject an offer? |
 | company | that company's notice | What is Juspay's CTC? |
 | company_rules | company notice(s) + T&P rules | I have a 6 LPA offer, can I sit for Juspay? |
 | multi_company | one search per company | Compare Mu Sigma and Tredence CTC |
