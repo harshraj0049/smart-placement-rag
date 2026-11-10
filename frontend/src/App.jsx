@@ -4,6 +4,7 @@ import { FEATURES } from './config'
 import { homeFor } from './auth/roles'
 import Shell from './components/Shell'
 import Login from './pages/Login'
+import Register from './pages/Register'
 import StudentDashboard from './pages/student/Dashboard'
 import Assistant from './pages/student/Assistant'
 import Eligibility from './pages/student/Eligibility'
@@ -38,6 +39,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/app" element={<Guard role="student"><Shell variant="student" /></Guard>}>
         <Route index element={<StudentDashboard />} />
         <Route path="assistant" element={<Assistant />} />

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Navigate, useLocation } from 'react-router-dom'
+import { Link, Navigate, useLocation } from 'react-router-dom'
 import { GraduationCap, UserRound, ClipboardList, Boxes, Loader2, AlertCircle, Info } from 'lucide-react'
 import { useApp } from '../context/AppContext'
 import { FEATURES } from '../config'
@@ -48,7 +48,7 @@ export default function Login() {
           <span className="brand-mark"><GraduationCap size={20} /></span>PlaceMate <span style={{ color: 'var(--violet)' }}>AI</span>
         </div>
         <div className="links"><a href="#features">Features</a><a href="#privacy">Privacy</a><a href="#how">How it works</a></div>
-        <button className="btn primary sm" onClick={() => document.getElementById('email')?.focus()}>Request access</button>
+        <Link className="btn primary sm" to="/register">Sign up</Link>
       </nav>
 
       <main className="login-wrap">
@@ -57,6 +57,9 @@ export default function Login() {
         <form className="login-card" onSubmit={submit} noValidate>
           {state?.reason === 'expired' && (
             <div className="callout warn" role="status" style={{ marginBottom: 18 }}><Info size={18} style={{ flex: 'none' }} /><span>Your session ended. Log in again to continue.</span></div>
+          )}
+          {state?.registered && (
+            <div className="callout ok" role="status" style={{ marginBottom: 18 }}><Info size={18} style={{ flex: 'none' }} /><span>Account created. Log in to continue.</span></div>
           )}
           <div className="role-pick" role="radiogroup" aria-label="Sign in as" style={{ gridTemplateColumns: `repeat(${ROLES.length}, 1fr)` }}>
             {ROLES.map(([id, label, Icon]) => (
@@ -69,6 +72,7 @@ export default function Login() {
             {err && <p id="login-err" role="alert" className="row" style={{ color: 'var(--red)', fontWeight: 600, alignItems: 'flex-start' }}><AlertCircle size={16} style={{ flex: 'none', marginTop: 2 }} />{err}</p>}
             <button className="btn primary block" style={{ height: 56, fontSize: 16 }} disabled={busy}>{busy ? <><Loader2 size={18} className="spin" />Logging in…</> : 'Log in'}</button>
           </div>
+          <p className="muted" style={{ textAlign: 'center', fontSize: 14, marginTop: 18 }}>New student? <Link to="/register" style={{ color: 'var(--blue)', fontWeight: 600 }}>Create an account</Link></p>
           {FEATURES.devLogin && (
             <div className="dev-box">
               <b>Development only.</b> Skip login to look at the screens. Requests are sent without a token, so the backend will refuse them.
