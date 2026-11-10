@@ -32,6 +32,7 @@ def route_summary(r: RouteResult) -> dict:
         "reasoning": d.reasoning if d else "",
         "evidence": [{"label": e.label, "chunks": len(e.docs)} for e in r.evidence],
         "stopped": r.message is not None,
+        "suggestions": r.suggestions,
         "fallback": r.fallback,
     }
 
@@ -73,6 +74,9 @@ class PlacementRAG:
             "answer": answer,
             "sources": sources,
             "route": route_summary(route),
+            # set when a company name was close but not exact: show "Did you mean ...?" with a button
+            # that sends this question; otherwise the student just rewrites their own question
+            "suggested_question": route.suggested_question,
             "latency_s": {"route_and_retrieve": round(t1 - t0, 2), "answer": round(t2 - t1, 2),
                           "total": round(t2 - t0, 2)},
             "_route": route,                 # full object (retrieved docs) for evaluation; drop before JSON

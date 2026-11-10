@@ -51,6 +51,14 @@ def oracle_route_fn(companies):
             reasoning="t", query_type="company_rules", companies=["TCS", "Juspay"],
             company_query="ctc", rules_query="category 2 1.5 times ctc"),
         "Tell me about Zen": RouteDecision(reasoning="t", query_type="company", companies=["Zen"]),
+        "What is the CTC at Infosys Ltd?": RouteDecision(reasoning="t", query_type="company",
+                                                       companies=["Infosys Ltd"], company_query="ctc"),
+        "What is the CTC at Infosys?": RouteDecision(reasoning="t", query_type="company",
+                                                     companies=["Infosys"], company_query="ctc"),
+        "Compare springwork and Juspay stipend": RouteDecision(
+            reasoning="t", query_type="multi_company", companies=["springwork", "Juspay"], company_query="stipend"),
+        "What is the CTC at musigma?": RouteDecision(reasoning="t", query_type="company",
+                                                     companies=["musigma"], company_query="ctc"),
     }
 
     def route(prompt: str) -> RouteDecision:
@@ -203,6 +211,38 @@ def test_router_unknown_company(retriever, companies):
 
     r = router.run("I have a 7 LPA TCS offer, can I sit for Juspay?")   # existing offer from an unknown company
     assert [e.label for e in r.evidence] == ["Juspay notice", "T&P rules"]
+
+
+def test_did_you_mean(retriever, companies):
+    router = Router(retriever, oracle_route_fn(companies))
+
+    r = router.run("What is the CTC at Infosys Ltd?")              # close but not exact -> suggest, no search
+    assert not r.evidence and r.message == 'Did you mean "Infosys" instead of "Infosys Ltd"?'
+    assert r.suggested_question == "What is the CTC at Infosys?"
+    r2 = router.run(r.suggested_question)                          # student accepts the suggestion
+    assert [e.label for e in r2.evidence] == ["Infosys notice"]
+
+    r = router.run("Compare springwork and Juspay stipend")       # one exact, one close
+    assert r.suggested_question == "Compare Springworks and Juspay stipend" and not r.evidence
+
+    r = router.run("What is the CTC at musigma?")                  # registered alias -> no question asked
+    assert [e.label for e in r.evidence] == ["Mu Sigma notice"]
+
+
+def test_did_you_mean_ambiguous_has_no_auto_rewrite():
+    n_companies = {"infosys sp": "Infosys SP", "infosys dse": "Infosys DSE"}
+
+    class R:
+        def list_companies(self):
+            return n_companies
+
+        def clear_cache(self):
+            pass
+
+    def route(prompt):
+        return RouteDecision(reasoning="t", query_type="company", companies=["infosys"])
+    r = Router(R(), route, aliases={}).run("infosys ctc?")
+    assert r.suggested_question is None and '"Infosys SP" or "Infosys DSE"' in r.message
 
 
 def test_router_falls_back_when_llm_fails(retriever):

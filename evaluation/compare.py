@@ -89,6 +89,7 @@ def run(rag, cases, with_answers=True, sleep=0.0):
                 "route_ok": route.query_type == case["type"],
                 "companies_written": route.decision.companies if route.decision else [],
                 "companies_resolved": resolved,
+                "did_you_mean": route.message if route.suggestions else None,   # stopped to ask: check the name
                 "companies_ok": (resolved == sorted(case["companies"])) if case["type"] in NAMES_COMPANIES else None,
                 "evidence": [{"label": e.label, "chunks": [d.metadata.get("chunk_id") for d in e.docs]}
                              for e in route.evidence],

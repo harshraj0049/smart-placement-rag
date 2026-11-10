@@ -15,6 +15,7 @@ Routes
 """
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from typing import Callable, Literal, Optional
 
@@ -107,6 +108,8 @@ class RouteResult:
     message: Optional[str] = None      # set when we stop before answering
     notes: list[str] = field(default_factory=list)            # passed to the answer model
     fallback: bool = False             # True when the router failed and we searched everything
+    suggestions: list[dict] = field(default_factory=list)     # [{"written": "osfn", "options": ["Osfin.ai"]}]
+    suggested_question: Optional[str] = None                  # the question with the suggestion filled in
 
     @property
     def query_type(self) -> str:
@@ -156,19 +159,40 @@ class Router:
         self.normalizer = CompanyNormalizer(self.companies, self._aliases)
         self.retriever.clear_cache()
 
-    def _resolve(self, names: list[str]) -> tuple[dict[str, str], list[str], list[str]]:
-        """-> (resolved written->stored, unknown names, ambiguity messages)."""
-        resolved, unknown, ambiguous = {}, [], []
+    def _resolve(self, names: list[str]) -> tuple[dict[str, str], list[dict], list[str]]:
+        """-> (resolved written->stored, suggestions, unknown names).
+
+        Only an exact name (ignoring case and punctuation) or a registered alias is accepted
+        silently. A close-but-not-exact name becomes a "Did you mean ...?" suggestion: the
+        student either sends the suggested question or rewrites their own; we never guess.
+        """
+        resolved, suggestions, unknown = {}, [], []
         for n in names:
             m = self.normalizer.normalize(n)
-            if m.canonical:
+            if m.method in ("exact", "alias"):
                 resolved[n] = m.canonical
+            elif m.method == "fuzzy":
+                suggestions.append({"written": n, "options": [self.normalizer.display(m.canonical)]})
             elif m.method == "ambiguous":
-                opts = " or ".join(self.normalizer.display(c) for c in m.candidates)
-                ambiguous.append(f'"{n}" could mean {opts}. Which one did you mean?')
+                suggestions.append({"written": n, "options": [self.normalizer.display(c) for c in m.candidates]})
             else:
                 unknown.append(n)
-        return resolved, unknown, ambiguous
+        return resolved, suggestions, unknown
+
+    @staticmethod
+    def _suggest(question: str, suggestions: list[dict]) -> tuple[str, Optional[str]]:
+        """-> (message, suggested question or None)."""
+        parts = []
+        for s in suggestions:
+            opts = " or ".join(f'"{o}"' for o in s["options"])
+            parts.append(f'Did you mean {opts} instead of "{s["written"]}"?')
+        suggested = question
+        for s in suggestions:
+            pattern = re.compile(re.escape(s["written"]), re.IGNORECASE)
+            if len(s["options"]) != 1 or not pattern.search(suggested):
+                return " ".join(parts), None         # can't build one unambiguous rewrite
+            suggested = pattern.sub(s["options"][0], suggested, count=1)
+        return " ".join(parts), suggested
 
     def run(self, question: str) -> RouteResult:
         prompt = ROUTER_PROMPT.format(
@@ -194,9 +218,11 @@ class Router:
                 Evidence("Company notices (best matches across all companies)",
                          self.retriever.search_notices(cq, self.cross_k))])
 
-        resolved, unknown, ambiguous = self._resolve(d.companies)
-        if ambiguous:
-            return RouteResult(question, d, resolved, message=" ".join(ambiguous))
+        resolved, suggestions, unknown = self._resolve(d.companies)
+        if suggestions:
+            message, suggested = self._suggest(question, suggestions)
+            return RouteResult(question, d, resolved, message=message,
+                               suggestions=suggestions, suggested_question=suggested)
         notes = [f'There is no recruitment notice for "{n}". Do not state any facts about it '
                  f'beyond what the student said.' for n in unknown]
         if not resolved and t != "company_rules":

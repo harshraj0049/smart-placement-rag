@@ -45,7 +45,12 @@ def main():
         q = input("Question> ").strip()
         if not q:
             break
-        show(rag.ask(q), args.debug)
+        out = rag.ask(q)
+        show(out, args.debug)
+        if out["suggested_question"]:
+            # the student either accepts our suggestion or simply types a new question
+            if input(f'Ask "{out["suggested_question"]}" instead? [y/N] ').strip().lower() == "y":
+                show(rag.ask(out["suggested_question"]), args.debug)
 
 
 if __name__ == "__main__":

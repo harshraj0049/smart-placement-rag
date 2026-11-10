@@ -12,7 +12,7 @@ pip install -r requirements.txt          # adds rapidfuzz, pytest
 python -m rag.ingest_all --reset         # once: rebuild chroma_db with the metadata schema
 python main.py "I have a 6 LPA offer, can I sit for Juspay?"
 python main.py --debug "Compare Mu Sigma and Tredence CTC"     # also prints route + chunks
-python -m pytest -q tests                # 32 offline tests, no API key needed
+python -m pytest -q tests                # 34 offline tests, no API key needed
 python -m evaluation.compare --no-answers   # baseline vs router: routing + retrieval only
 python -m evaluation.compare --sleep 4      # full run with answers (free tier: keep the sleep)
 ```
@@ -41,8 +41,15 @@ question
 | cross_company | all notices, k=10, best effort | Which companies need 8 CGPA? |
 | out_of_scope | none, fixed reply | Who won the IPL? |
 
+Company names: an exact name (ignoring case and punctuation) or an alias from `registry.json` is
+used directly. A close but not exact name ("Infosys Ltd", "springwork") is never silently
+corrected: the reply is `Did you mean "Infosys" instead of "Infosys Ltd"?` and `ask()` returns
+`suggested_question` ("What is the CTC at Infosys?"). The frontend can show it as a button; the
+student either sends it or rewrites their own question, and nothing else happens on our side.
+Two close candidates list both and give no `suggested_question`.
+
 Early exits: an unknown company ("Google") gets "I don't have any recruitment notice for Google"
-and no LLM answer call. An ambiguous name asks which one. If the router call fails twice, the
+and no LLM answer call. If the router call fails twice, the
 question falls back to an unfiltered search over everything.
 
 ## New files
@@ -83,3 +90,12 @@ harness. The Gemini structured-output schema was built against `langchain-google
 With a perfect (oracle) router and crude keyword embeddings, evidence recall went 0.47 -> 0.92 on
 company+rules questions and 0.50 -> 1.00 on multi-company; wrong-company chunks dropped to zero.
 That is an upper bound, not the real result.
+
+## Metadata contract
+
+Follows the shared contract (college_id, doc_type, batch, document_id, document_name, company,
+company_display, notice_type, page, chunk_index, chunk_id, content_hash, ingest_version,
+ingested_at; job_role only when provided; no null values; page stored zero-based and shown
+one-based). Agreed addition: `notice_date` (int, YYYYMMDD), kept for "latest notice" questions.
+Retrieval filters on `doc_type` (rules search = `tnp_rules` + `placement_faq`), `company` and,
+when `BATCH` is set, `batch`.
