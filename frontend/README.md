@@ -29,17 +29,8 @@ npm run dev
 
 Vite opens at `http://localhost:5173`. Run `npm run build` in `frontend/` for a production build.
 
-The login page provides the two fixed demo accounts. Authentication details and demo-only limitations are in
+Authentication is handled by the backend. The frontend submits the entered credentials to the login API and does not include demo accounts or a login bypass. Authentication details and demo-only limitations are in
 [`BACKEND_INTEGRATION.md`](./BACKEND_INTEGRATION.md).
-
-## Test screens without authentication
-
-Set `VITE_DEV_LOGIN=true` in `.env` to show **Enter as student / college admin** without logging in. This only works in
-`npm run dev`. API calls then carry no token, so use it only to inspect screens; the backend rejects those calls.
-
-- Admin → Knowledge base → Upload document: every validation message, the company-notice fields, and that the button locks while uploading. Without a server the upload ends in "Cannot reach the server".
-- Student → AI Placement Assistant: loading, empty and error states, and **Try again**.
-- Redirects: a student opening `/admin/...` lands on `/app`, an admin opening `/app/...` lands on `/admin`, a logged-out visitor lands on `/login`.
 
 The success path (added / updated / skipped with a real chunk count, a real answer) needs the backend. To check the request shape,
 open the browser's Network tab: uploads are `multipart/form-data` with no `college_id`; chat sends the question and up to ten prior messages.

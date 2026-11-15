@@ -18,8 +18,6 @@ export const ENDPOINTS = {
 }
 
 export const FEATURES = {
-  // Dev-only shortcut that skips login. Ignored in production builds.
-  devLogin: Boolean(env.DEV) && flag(env.VITE_DEV_LOGIN),
   // Pages outside the immediate MVP (tickets, answer review, analytics, platform console...).
   // They still run on demo data, so they stay hidden unless this is switched on.
   futurePages: flag(env.VITE_ENABLE_FUTURE_PAGES),

@@ -77,8 +77,11 @@ export default function ChatPanel({ docked = false, initialQuestion, onMinimize 
   const endRef = useRef(null)
   const sentInitial = useRef(false)
   const sending = useRef(false) // guards against a second send before React re-renders
+  const requestController = useRef(null)
 
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }) }, [messages, busy])
+
+  useEffect(() => () => requestController.current?.abort(), [])
 
   useEffect(() => {
     if (!busy) {
@@ -98,12 +101,14 @@ export default function ChatPanel({ docked = false, initialQuestion, onMinimize 
     const question = (q ?? text).trim()
     if (!question || sending.current) return
     sending.current = true
+    const controller = new AbortController()
+    requestController.current = controller
     const requestStartedAt = performance.now()
     setChatBusy(true)
     if (retryOf) setMessages((all) => all.filter((x) => x.id !== retryOf))
     else { setText(''); setMessages((all) => [...all, { id: uid(), role: 'user', text: question }]) }
     try {
-      const r = await askAssistant({ question, history: lastFiveExchanges(messages) })
+      const r = await askAssistant({ question, history: lastFiveExchanges(messages), signal: controller.signal })
       setMessages((all) => [...all, {
         id: uid(),
         role: 'bot',
@@ -113,14 +118,17 @@ export default function ChatPanel({ docked = false, initialQuestion, onMinimize 
         durationMs: performance.now() - requestStartedAt,
       }])
     } catch (err) {
-      setMessages((all) => [...all, {
-        id: uid(),
-        role: 'bot',
-        error: err.message || 'Something went wrong. Try again.',
-        question,
-        durationMs: performance.now() - requestStartedAt,
-      }])
+      if (err?.name !== 'AbortError') {
+        setMessages((all) => [...all, {
+          id: uid(),
+          role: 'bot',
+          error: err.message || 'Something went wrong. Try again.',
+          question,
+          durationMs: performance.now() - requestStartedAt,
+        }])
+      }
     } finally {
+      if (requestController.current === controller) requestController.current = null
       sending.current = false
       setChatBusy(false)
     }

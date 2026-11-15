@@ -1,7 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ADMIN, DRIVES, STUDENT, SUPER, TENANTS, TICKETS_SEED, SLA_HOURS } from '../data/seed'
-import { FEATURES } from '../config'
+import { DRIVES, STUDENT, TENANTS, TICKETS_SEED, SLA_HOURS } from '../data/seed'
 import { clearSession, isTokenExpired, loadSession, saveSession } from '../auth/session'
 import { login as loginRequest } from '../api/auth'
 import { setUnauthorizedHandler } from '../api/http'
@@ -22,13 +21,10 @@ function usePersisted(key, initial) {
   return [value, setValue]
 }
 
-const DEV_USERS = { student: STUDENT, admin: ADMIN, super: SUPER }
-
 function initialUser() {
   const s = loadSession()
   if (!s?.user) return null
-  if (s.user.devLogin && !FEATURES.devLogin) { clearSession(); return null } // dev sessions never survive into a real build
-  if (s.token && isTokenExpired(s.token)) { clearSession(); return null }
+  if (!s.token || isTokenExpired(s.token)) { clearSession(); return null }
   return s.user
 }
 
@@ -57,26 +53,21 @@ export function AppProvider({ children }) {
     return () => clearTimeout(t)
   }, [toast])
 
-  const resetChat = useCallback(() => setMessages([]), [])
+  const resetChat = useCallback(() => {
+    setMessages([])
+    setChatBusy(false)
+  }, [])
   const logout = useCallback(() => { clearSession(); setUser(null); resetChat() }, [resetChat])
 
   // Real login: the token and user come from the backend (see api/auth.js for what is still unconfirmed).
   const login = useCallback(async ({ email, password }) => {
     const { token, user: u } = await loginRequest({ email, password })
     const next = { ...u, email: u.email || email }
+    resetChat()
     saveSession({ token, user: next })
     setUser(next)
     return next
-  }, [])
-
-  // Dev-only: lets you look at the screens without a backend. Requests carry no token.
-  const devLogin = useCallback((role) => {
-    if (!FEATURES.devLogin) return null
-    const next = { ...DEV_USERS[role], devLogin: true }
-    saveSession({ token: null, user: next })
-    setUser(next)
-    return next
-  }, [])
+  }, [resetChat])
 
   // Expired or rejected token: clear the session and send the person to log in again.
   const expireSession = useCallback(() => {
@@ -112,9 +103,9 @@ export function AppProvider({ children }) {
   }
 
   const value = useMemo(() => ({
-    user, login, devLogin, logout, toast, notify,
+    user, login, logout, toast, notify,
     messages, setMessages, chatBusy, setChatBusy, startNewChat: resetChat,
     student, setStudent, tickets, addTicket, updateTicket, drives, tenants, addTenant, resetDemo,
-  }), [user, toast, messages, chatBusy, student, tickets, drives, tenants, login, devLogin, logout, resetChat, notify]) // eslint-disable-line
+  }), [user, toast, messages, chatBusy, student, tickets, drives, tenants, login, logout, resetChat, notify]) // eslint-disable-line
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>
 }

@@ -20,12 +20,7 @@ Authentication, admin document upload/listing, and student chat are implemented 
 
 ## 1. Authentication (implemented demo)
 
-The FastAPI service is in `backend/`. It has no database and only accepts these fixed demo accounts:
-
-| Role | Email | Password |
-|---|---|---|
-| Student | `rohan.sharma@kiit.ac.in` | `student123` |
-| College admin | `tnp@kiit.ac.in` | `admin123` |
+The FastAPI service is in `backend/`. Its demo accounts are defined only in `backend/auth.py`; the frontend does not bundle account credentials.
 
 - Start the backend from the repository root with `uvicorn backend.main:app --reload`.
 - Start the frontend from `frontend/` with `npm run dev`. Vite proxies `/api` to `http://localhost:8000`.
