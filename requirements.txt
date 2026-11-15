@@ -13,6 +13,7 @@ chromadb
 fastapi
 uvicorn[standard]
 httpx
+python-multipart
 
 sentence-transformers
 rank-bm25

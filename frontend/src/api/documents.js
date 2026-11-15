@@ -3,8 +3,7 @@ import { ApiError, notConfigured, request } from './http'
 
 /**
  * Field names follow rag/ingest.py (DocumentMetadata and IngestResult).
- * The multipart part names and the response keys are still to be confirmed with Sarthak,
- * who owns the FastAPI router. college_id is never sent: the backend derives it from the admin's JWT.
+ * college_id is never sent: the backend derives it from the admin's JWT.
  */
 export function buildUploadFormData(v) {
   const fd = new FormData()

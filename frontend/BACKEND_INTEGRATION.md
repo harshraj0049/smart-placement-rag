@@ -5,13 +5,13 @@ college isolation (documents and chat) and roles (`admin` vs `student`) on every
 are navigation only.
 
 Paths below are relative to `VITE_API_BASE_URL` (default `/api`, proxied to FastAPI by `vite.config.js`).
-Authentication is implemented for this demo. The document, chat, and history integrations below are still pending.
+Authentication and admin document upload/listing are implemented for this demo. Chat and history integrations are still pending.
 
 ## Where each contract lives in the code
 
 | Area | File | What to edit |
 |---|---|---|
-| Endpoint paths | `.env` (see `.env.example`), read in `src/config.js` | Set paths for integrations that are not implemented yet. |
+| Endpoint paths | `.env` (see `.env.example`), read in `src/config.js` | Override the default API paths if needed. |
 | Login | `src/api/auth.js` → `AUTH_CONTRACT` | Login field names, response keys, role strings |
 | Upload and document list | `src/api/documents.js` | Multipart part names, response keys |
 | Chat and history | `src/api/chat.js` | Request body, response keys |
@@ -36,12 +36,13 @@ The FastAPI service is in `backend/`. It has no database and only accepts these 
 
 The frontend stores the JWT in localStorage, checks expiry, and sends it as a bearer token. A 401 on an authenticated request clears the session and redirects to `/login`. `VITE_AUTH_LOGIN_PATH` can override the default `/auth/login` path relative to `VITE_API_BASE_URL`.
 
-## 2. Document upload (admin) — not implemented yet
+## 2. Document upload (admin) — implemented
 
-`POST VITE_DOCUMENTS_UPLOAD_PATH` (default `/documents`; use `/api/documents` via the proxy)
+`POST /api/documents` (default `VITE_DOCUMENTS_UPLOAD_PATH=/documents`, relative to `/api`)
 
-`multipart/form-data`. The frontend does **not** set `Content-Type`; the browser adds the boundary.
-Part names follow `rag/ingest.py` (`DocumentMetadata`), part names themselves are UNCONFIRMED:
+Requires an admin bearer token. The frontend sends `multipart/form-data` and does **not** set `Content-Type`; the browser adds the boundary.
+The backend derives the college from the token, validates and synchronously indexes the PDF, then stores it under `data/uploads/<college_id>/`.
+The original filename is kept as metadata; stored files use the ingestion document ID.
 
 | Part | Sent when | Notes |
 |---|---|---|
@@ -54,16 +55,15 @@ Part names follow `rag/ingest.py` (`DocumentMetadata`), part names themselves ar
 | `notice_type` | company notices | required: `registration` `job_description` `eligibility` `ppt` `schedule` `update` `general` |
 | `job_role` | company notices, if filled | max 100 chars |
 
-Response read (matches `IngestResult`): `{ "status": "added"|"updated"|"skipped", "document_id", "document_name", "chunks": <int> }`.
-`chunks` is shown as returned. Error bodies: FastAPI `{ "detail": "..." }` or `{ "detail": [{ "loc": [...], "msg": "..." }] }`
-are shown to the admin as-is (e.g. the 422 "scanned PDF" message from `IngestError`).
+Response: `{ "status": "added"|"updated"|"skipped", "document_id", "document_name", "chunks": <int> }`.
+The upload is stored only after successful ingestion. Invalid PDFs and scanned PDFs return HTTP 422; files over 20 MB return 413.
 
-## 3. Document list (admin) — not ready
+## 3. Document list (admin) — implemented
 
-`GET VITE_DOCUMENTS_LIST_PATH` (empty by default). Accepts an array or `{ items | documents: [...] }`. Per row it reads:
+`GET /api/documents` (default `VITE_DOCUMENTS_LIST_PATH=/documents`, relative to `/api`). Requires an admin bearer token and returns the signed-in college's uploaded documents as an array. Per row it reads:
 `document_id`, `document_name`, `doc_type`, `company_display` or `company`, `batch`, `status` (string, shown as a badge),
 `chunks` or `chunk_count`, `ingested_at` (epoch seconds, as in the chunk metadata) or `uploaded_at` / `created_at`.
-Until this exists, the page says so and only lists uploads confirmed by the server during the current visit.
+The list is persisted in per-document metadata files alongside PDFs under `data/uploads/<college_id>/`.
 
 ## 4. Chat (student) — not implemented yet
 
@@ -83,9 +83,9 @@ Both are empty by default and the UI says history is not available.
 
 ## Open integration items
 
-1. Which JWT claim carries the college, and ensure every documents and chat route filters by it.
-2. Upload: final path and prefix, multipart part names, response keys (especially the chunk count key), HTTP codes for bad PDF / too large / validation, and whether ingestion is synchronous. Embedding a large PDF may take a while and the frontend has no timeout and shows no fake progress.
-3. Document list endpoint: path, fields, an indexing `status` vocabulary, pagination. Is delete or replace-by-id planned?
+1. Document storage and listing use the authenticated user's `college_id`; apply the same isolation to future chat routes.
+2. Upload is synchronous; embedding a large PDF may take a while and the frontend has no timeout and shows no fake progress.
+3. Document deletion and pagination are not implemented.
 4. Chat: path, request and response above, whether the thread is held by `conversation_id`, and the error codes for "no answer" versus failures.
 5. Chat history endpoints, if they will exist at all.
 6. CORS settings, or confirmation that production serves the frontend and API from one origin.
@@ -94,6 +94,6 @@ Both are empty by default and the UI says history is not available.
 ## RAG notes
 
 1. `rag/query.py` returns plain text. For source chips the response needs document name and page per source (the chunk metadata already has `document_name` and `page`).
-2. `rag/ingest.py`: the `job_role` field is currently indented inside the `NoticeType` enum, not inside `DocumentMetadata`. `ingest_document` reads `meta.job_role`, so company notices would fail with an attribute error. Move it into `DocumentMetadata` (and add it to the cleaning validator as the comment says).
+2. `rag/ingest.py` now defines and cleans `job_role` on `DocumentMetadata`, so company notices can be indexed.
 3. The frontend mirrors the limits in `ingest.py` (20 MB, title 120, company 100, job role 100). Tell us if they change.
 4. Wording of "I don't have that information, please contact the T&P cell." is shown as a normal answer. Agree whether the backend will mark no-answer cases separately.

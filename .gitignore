@@ -12,6 +12,7 @@ wheels/
 .venv/
 .env.local
 chroma_db/
+data/uploads/
 
 #environment variables 
 .env

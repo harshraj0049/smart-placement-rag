@@ -5,9 +5,11 @@ from fastapi import Depends, FastAPI, HTTPException, status
 from pydantic import BaseModel, Field
 
 from backend.auth import DEMO_USERS, create_access_token, get_current_user
+from backend.documents import router as documents_router
 
 
 app = FastAPI(title="PlaceMate Demo API")
+app.include_router(documents_router)
 
 
 class LoginRequest(BaseModel):

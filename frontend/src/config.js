@@ -12,8 +12,8 @@ export const API_BASE_URL = (text(env.VITE_API_BASE_URL) || '/api').replace(/\/+
 // the UI then shows an honest "not connected" state instead of calling the server.
 export const ENDPOINTS = {
   login: text(env.VITE_AUTH_LOGIN_PATH) || '/auth/login',                  // POST JSON { email, password }
-  documentsUpload: text(env.VITE_DOCUMENTS_UPLOAD_PATH) || '/documents',   // POST multipart/form-data (team discussion)
-  documentsList: text(env.VITE_DOCUMENTS_LIST_PATH),                       // GET: not ready yet
+  documentsUpload: text(env.VITE_DOCUMENTS_UPLOAD_PATH) || '/documents',   // POST multipart/form-data, admin only
+  documentsList: text(env.VITE_DOCUMENTS_LIST_PATH) || '/documents',       // GET, admin's college only
   chat: text(env.VITE_CHAT_PATH) || '/query',                              // UNCONFIRMED: inherited from the earlier README
   conversations: text(env.VITE_CONVERSATIONS_PATH),                        // GET list: only if the backend supports history
   conversation: text(env.VITE_CONVERSATION_PATH),                          // GET one, use {id} as placeholder, e.g. /conversations/{id}

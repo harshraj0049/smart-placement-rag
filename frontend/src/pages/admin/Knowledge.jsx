@@ -25,7 +25,7 @@ export default function Knowledge() {
       id: `${Date.now()}`, name: r.documentName || sent.file.name, type: sent.docType, batch: sent.batch.trim(),
       company: sent.docType === 'company_notice' ? sent.company.trim() : null, status: r.status, chunks: r.chunks, date: new Date().toISOString(),
     }, ...rows])
-    if (status === 'ready' || status === 'error') reload()
+    reload()
   }
 
   return (
