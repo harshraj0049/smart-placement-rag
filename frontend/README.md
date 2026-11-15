@@ -7,10 +7,10 @@ Two roles for the MVP:
 | Role | Lands on | MVP screens |
 |---|---|---|
 | College admin | `/admin` | Dashboard, Knowledge base (PDF upload with validation, uploaded documents) |
-| Student | `/app` | Dashboard, AI Placement Assistant (RAG chat), Companies, My Eligibility, Chat history |
+| Student | `/app` | Dashboard, AI Placement Assistant (RAG chat), Companies, My Eligibility |
 
 Companies, drives, eligibility and "latest updates" are **sample data** and are labelled that way until the backend provides them.
-Documents, chat answers and chat history are never simulated: they come from the API or show a "not connected" / error state.
+Documents and chat answers come from the API. Chat context stays in memory for up to five exchanges and is not saved.
 
 ## Run
 
@@ -42,12 +42,12 @@ Set `VITE_DEV_LOGIN=true` in `.env` to show **Enter as student / college admin**
 - Redirects: a student opening `/admin/...` lands on `/app`, an admin opening `/app/...` lands on `/admin`, a logged-out visitor lands on `/login`.
 
 The success path (added / updated / skipped with a real chunk count, a real answer) needs the backend. To check the request shape,
-open the browser's Network tab: the upload is `multipart/form-data` with no `college_id`, and carries `Authorization: Bearer ...` once login works.
+open the browser's Network tab: uploads are `multipart/form-data` with no `college_id`; chat sends the question and up to ten prior messages.
+Both carry `Authorization: Bearer ...` once login works. Set `GEMINI_API_KEY` in the repository-root `.env` for live chat responses.
 
 ## Connecting the backend
 
-Read **`BACKEND_INTEGRATION.md`**. It lists every endpoint, request and response the frontend expects, which parts are
-still unconfirmed, and the remaining backend/RAG integration questions. In short:
+Read **`BACKEND_INTEGRATION.md`** for the endpoint contracts and remaining integration questions. In short:
 
 1. Set the paths in `.env` (`VITE_AUTH_LOGIN_PATH`, `VITE_DOCUMENTS_UPLOAD_PATH`, `VITE_DOCUMENTS_LIST_PATH`, `VITE_CHAT_PATH`, ...).
 2. Adjust the small `*_CONTRACT` blocks in `src/api/auth.js`, `src/api/documents.js`, `src/api/chat.js` if the field names differ.
@@ -61,12 +61,12 @@ src/
   api/http.js            fetch wrapper: bearer token, multipart, error parsing, 401 handling
   api/auth.js            login (unconfirmed contract in one object)
   api/documents.js       upload + list
-  api/chat.js            ask + history
+  api/chat.js            stateless ask with recent context
   auth/session.js        JWT session storage and expiry check
   auth/roles.js          role to home route
   context/AppContext.jsx session, chat state, toast; demo slices only for non-MVP pages
   lib/validators.js      upload validation (PDF, 20 MB, batch, company-notice fields)
-  hooks/                 useDocuments, useConversations
+  hooks/                 useDocuments
   components/            Shell (role-based nav), ChatPanel, DocumentUploadForm, shared UI
   pages/student|admin|super
   data/seed.js           demo data for the sample pages only

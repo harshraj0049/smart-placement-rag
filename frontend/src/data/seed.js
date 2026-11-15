@@ -1,5 +1,5 @@
 // DEMO DATA. Only the sample companies/eligibility pages and the pages outside the immediate MVP read from here.
-// Documents, chat answers and chat history are no longer simulated: they come from the backend.
+// Documents and chat answers come from the backend; conversations are not saved.
 const day = 86400000
 const now = Date.now()
 const ago = (d, h = 0) => new Date(now - d * day - h * 3600000).toISOString()

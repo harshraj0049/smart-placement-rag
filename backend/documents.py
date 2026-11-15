@@ -11,7 +11,7 @@ from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, s
 from pydantic import ValidationError
 
 from backend.auth import get_current_user
-from rag.embedder import EmbeddingModel
+from backend.rag_service import get_embedding_model, invalidate_chat_retrievers
 from rag.ingest import (
     MAX_PDF_BYTES,
     DocType,
@@ -24,7 +24,6 @@ from rag.ingest import (
 
 router = APIRouter(prefix="/api/documents", tags=["documents"])
 UPLOAD_ROOT = Path(__file__).resolve().parents[1] / "data" / "uploads"
-_embedding_model: EmbeddingModel | None = None
 
 
 def _require_admin(user: dict[str, Any] = Depends(get_current_user)) -> dict[str, Any]:
@@ -44,13 +43,6 @@ def _college_directory(user: dict[str, Any], *, create: bool) -> Path:
     if create:
         directory.mkdir(parents=True, exist_ok=True)
     return directory
-
-
-def _get_embedding_model() -> EmbeddingModel:
-    global _embedding_model
-    if _embedding_model is None:
-        _embedding_model = EmbeddingModel()
-    return _embedding_model
 
 
 def _save_pdf(upload: UploadFile, directory: Path) -> Path:
@@ -132,10 +124,13 @@ def upload_document(
                 original_filename,
                 metadata,
                 college_id,
-                _get_embedding_model(),
+                get_embedding_model(),
             )
         except IngestError as exc:
             raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+        if result.status != "skipped":
+            invalidate_chat_retrievers()
 
         if not re.fullmatch(r"[a-f0-9]{32}", result.document_id):
             raise RuntimeError("The ingestion pipeline returned an invalid document ID.")

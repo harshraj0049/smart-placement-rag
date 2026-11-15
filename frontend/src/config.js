@@ -14,9 +14,7 @@ export const ENDPOINTS = {
   login: text(env.VITE_AUTH_LOGIN_PATH) || '/auth/login',                  // POST JSON { email, password }
   documentsUpload: text(env.VITE_DOCUMENTS_UPLOAD_PATH) || '/documents',   // POST multipart/form-data, admin only
   documentsList: text(env.VITE_DOCUMENTS_LIST_PATH) || '/documents',       // GET, admin's college only
-  chat: text(env.VITE_CHAT_PATH) || '/query',                              // UNCONFIRMED: inherited from the earlier README
-  conversations: text(env.VITE_CONVERSATIONS_PATH),                        // GET list: only if the backend supports history
-  conversation: text(env.VITE_CONVERSATION_PATH),                          // GET one, use {id} as placeholder, e.g. /conversations/{id}
+  chat: text(env.VITE_CHAT_PATH) || '/query',                              // POST stateless question plus recent exchanges
 }
 
 export const FEATURES = {

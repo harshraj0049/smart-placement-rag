@@ -5,7 +5,7 @@ college isolation (documents and chat) and roles (`admin` vs `student`) on every
 are navigation only.
 
 Paths below are relative to `VITE_API_BASE_URL` (default `/api`, proxied to FastAPI by `vite.config.js`).
-Authentication and admin document upload/listing are implemented for this demo. Chat and history integrations are still pending.
+Authentication, admin document upload/listing, and student chat are implemented for this demo. Conversations are not persisted.
 
 ## Where each contract lives in the code
 
@@ -14,7 +14,7 @@ Authentication and admin document upload/listing are implemented for this demo. 
 | Endpoint paths | `.env` (see `.env.example`), read in `src/config.js` | Override the default API paths if needed. |
 | Login | `src/api/auth.js` → `AUTH_CONTRACT` | Login field names, response keys, role strings |
 | Upload and document list | `src/api/documents.js` | Multipart part names, response keys |
-| Chat and history | `src/api/chat.js` | Request body, response keys |
+| Chat | `src/api/chat.js` | Request body, answer and source fields |
 | Token header, error parsing, 401 handling | `src/api/http.js` | Bearer token and error shape |
 | Token storage | `src/auth/session.js` | localStorage vs cookie |
 
@@ -65,35 +65,29 @@ The upload is stored only after successful ingestion. Invalid PDFs and scanned P
 `chunks` or `chunk_count`, `ingested_at` (epoch seconds, as in the chunk metadata) or `uploaded_at` / `created_at`.
 The list is persisted in per-document metadata files alongside PDFs under `data/uploads/<college_id>/`.
 
-## 4. Chat (student) — not implemented yet
+## 4. Chat (student) — implemented
 
-`POST VITE_CHAT_PATH` (default `/query`, inherited from the earlier README, please confirm)
+`POST /api/query` (default `VITE_CHAT_PATH=/query`, relative to `/api`). Requires a student bearer token.
 
-- Request: `{ "question": "...", "conversation_id": "..." }` (`conversation_id` only after the backend has returned one)
-- Response read: `answer` (also accepts `text` / `response`), optional `sources: [{ doc | document_name, page }]`,
-  optional `conversation_id`, optional numeric `confidence`.
+- Request: `{ "question": "...", "history": [{ "role": "user"|"assistant", "content": "..." }] }`.
+  The frontend sends up to the last five completed exchanges (10 messages) for follow-up context. The backend rejects a longer history.
+- Response: `{ "answer": "...", "sources": [{ "doc": "...", "page": 1 }] }`. Page numbers are one-based.
+- The backend uses the authenticated student's `college_id` to choose the vector collection. It does not store chat requests or history.
+- Chat history is held in React memory only; refreshing the page, logging out, or starting a new chat clears it.
+- Set `GEMINI_API_KEY` in the repository-root `.env` file or backend environment. Without it, chat returns HTTP 503 with a configuration message.
 - Answer text may use `**bold**` and `- ` bullets. Nothing else is rendered as markup.
-
-Follow-ups: the frontend relies on the backend remembering the thread through `conversation_id`. If the backend is stateless
-instead, tell the frontend to send previous turns.
-
-History (optional): `GET VITE_CONVERSATIONS_PATH` → list of `{ id | conversation_id, title | first_question, updated_at | created_at }`;
-`GET VITE_CONVERSATION_PATH` with `{id}` placeholder → `{ messages: [{ role: "user"|"assistant", content | text, sources }] }`.
-Both are empty by default and the UI says history is not available.
 
 ## Open integration items
 
 1. Document storage and listing use the authenticated user's `college_id`; apply the same isolation to future chat routes.
 2. Upload is synchronous; embedding a large PDF may take a while and the frontend has no timeout and shows no fake progress.
 3. Document deletion and pagination are not implemented.
-4. Chat: path, request and response above, whether the thread is held by `conversation_id`, and the error codes for "no answer" versus failures.
-5. Chat history endpoints, if they will exist at all.
-6. CORS settings, or confirmation that production serves the frontend and API from one origin.
-7. Later, not blocking: endpoints for student profile and eligibility, company/drive information, student statistics for the admin dashboard, and a document count for the student dashboard.
+4. CORS settings, or confirmation that production serves the frontend and API from one origin.
+5. Later, not blocking: endpoints for student profile and eligibility, company/drive information, student statistics for the admin dashboard, and a document count for the student dashboard.
 
 ## RAG notes
 
-1. `rag/query.py` returns plain text. For source chips the response needs document name and page per source (the chunk metadata already has `document_name` and `page`).
+1. `rag/query.py` returns an answer and document/page sources from retrieved chunks.
 2. `rag/ingest.py` now defines and cleans `job_role` on `DocumentMetadata`, so company notices can be indexed.
 3. The frontend mirrors the limits in `ingest.py` (20 MB, title 120, company 100, job role 100). Tell us if they change.
 4. Wording of "I don't have that information, please contact the T&P cell." is shown as a normal answer. Agree whether the backend will mark no-answer cases separately.

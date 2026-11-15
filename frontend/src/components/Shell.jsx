@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import {
-  GraduationCap, LayoutDashboard, MessageSquareText, ShieldCheck, Building2, FileText, History, Settings, Bell, Search, ChevronDown,
+  GraduationCap, LayoutDashboard, MessageSquareText, ShieldCheck, Building2, FileText, Settings, Bell, Search, ChevronDown,
   LogOut, Menu, Ticket, Library, BarChart3, ClipboardCheck, Sparkles, Globe2, Boxes, Users,
 } from 'lucide-react'
 import { useApp } from '../context/AppContext'
@@ -14,7 +14,7 @@ const F = FEATURES.futurePages // pages outside the immediate MVP
 const NAV = {
   student: [
     ['/app', 'Dashboard', LayoutDashboard, true], ['/app/assistant', 'AI Placement Assistant', MessageSquareText], ['/app/companies', 'Companies', Building2],
-    ['/app/eligibility', 'My Eligibility', ShieldCheck], ['/app/history', 'Chat History', History],
+    ['/app/eligibility', 'My Eligibility', ShieldCheck],
     ...(F ? [['/app/guidelines', 'Placement Guidelines', FileText], ['/app/tickets', 'My Questions', Ticket], ['/app/settings', 'Profile & Settings', Settings]] : []),
   ],
   admin: [

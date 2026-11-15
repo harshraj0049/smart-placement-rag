@@ -20,6 +20,10 @@ function Sources({ sources }) {
   )
 }
 
+function formatResponseTime(durationMs) {
+  return `${(durationMs / 1000).toFixed(1)}s`
+}
+
 function Message({ m, busy, onRetry }) {
   if (m.role === 'user') return <div className="msg user"><div className="bubble">{m.text}</div></div>
   return (
@@ -41,34 +45,81 @@ function Message({ m, busy, onRetry }) {
             )}
           </>
         )}
+        {typeof m.durationMs === 'number' && (
+          <div className="small faint" style={{ marginTop: 8 }}>Response time: {formatResponseTime(m.durationMs)}</div>
+        )}
       </div>
     </div>
   )
 }
 
+function lastFiveExchanges(messages) {
+  const exchanges = []
+  let pendingQuestion = null
+  for (const message of messages) {
+    if (message.role === 'user') {
+      pendingQuestion = message
+    } else if (message.role === 'bot' && !message.error && pendingQuestion) {
+      exchanges.push([
+        { role: 'user', content: pendingQuestion.text.slice(-4000) },
+        { role: 'assistant', content: message.text.slice(-4000) },
+      ])
+      pendingQuestion = null
+    }
+  }
+  return exchanges.slice(-5).flat()
+}
+
 export default function ChatPanel({ docked = false, initialQuestion, onMinimize }) {
-  const { messages, setMessages, conversationId, setConversationId, chatBusy: busy, setChatBusy, startNewChat, user } = useApp()
+  const { messages, setMessages, chatBusy: busy, setChatBusy, startNewChat, user } = useApp()
   const [text, setText] = useState('')
+  const [elapsedSeconds, setElapsedSeconds] = useState(0)
   const endRef = useRef(null)
   const sentInitial = useRef(false)
   const sending = useRef(false) // guards against a second send before React re-renders
 
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' }) }, [messages, busy])
 
+  useEffect(() => {
+    if (!busy) {
+      setElapsedSeconds(0)
+      return undefined
+    }
+
+    const startedAt = performance.now()
+    const timerId = window.setInterval(() => {
+      setElapsedSeconds(Math.floor((performance.now() - startedAt) / 1000))
+    }, 250)
+    return () => window.clearInterval(timerId)
+  }, [busy])
+
   // `retryOf` is the id of a failed answer: it is replaced, and the student's question is not added twice.
   const send = async (q, retryOf) => {
     const question = (q ?? text).trim()
     if (!question || sending.current) return
     sending.current = true
+    const requestStartedAt = performance.now()
     setChatBusy(true)
     if (retryOf) setMessages((all) => all.filter((x) => x.id !== retryOf))
     else { setText(''); setMessages((all) => [...all, { id: uid(), role: 'user', text: question }]) }
     try {
-      const r = await askAssistant({ question, conversationId })
-      if (r.conversationId) setConversationId(r.conversationId)
-      setMessages((all) => [...all, { id: uid(), role: 'bot', text: r.text, sources: r.sources, confidence: r.confidence }])
+      const r = await askAssistant({ question, history: lastFiveExchanges(messages) })
+      setMessages((all) => [...all, {
+        id: uid(),
+        role: 'bot',
+        text: r.text,
+        sources: r.sources,
+        confidence: r.confidence,
+        durationMs: performance.now() - requestStartedAt,
+      }])
     } catch (err) {
-      setMessages((all) => [...all, { id: uid(), role: 'bot', error: err.message || 'Something went wrong. Try again.', question }])
+      setMessages((all) => [...all, {
+        id: uid(),
+        role: 'bot',
+        error: err.message || 'Something went wrong. Try again.',
+        question,
+        durationMs: performance.now() - requestStartedAt,
+      }])
     } finally {
       sending.current = false
       setChatBusy(false)
@@ -99,7 +150,7 @@ export default function ChatPanel({ docked = false, initialQuestion, onMinimize 
           </div>
         )}
         {messages.map((m) => <Message key={m.id} m={m} busy={busy} onRetry={(failed) => send(failed.question, failed.id)} />)}
-        {busy && <div className="msg bot"><div className="mini-bot"><Bot size={18} /></div><div className="bubble"><span className="typing" role="status" aria-label="The assistant is answering"><i /><i /><i /></span></div></div>}
+        {busy && <div className="msg bot"><div className="mini-bot"><Bot size={18} /></div><div className="bubble"><span className="typing" aria-hidden="true"><i /><i /><i /></span><span className="small faint" role="status" style={{ marginLeft: 8 }}>Answering… {elapsedSeconds}s</span></div></div>}
         <div ref={endRef} />
       </div>
       {messages.length === 0 && (

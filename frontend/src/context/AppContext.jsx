@@ -37,9 +37,8 @@ export function AppProvider({ children }) {
   const [user, setUser] = useState(initialUser)
   const [toast, setToast] = useState(null)
 
-  // Chat state lives here so the docked chat on the dashboard and the full assistant page share one conversation.
+  // Chat stays in memory so the docked and full assistant share context without saving conversations.
   const [messages, setMessages] = useState([])
-  const [conversationId, setConversationId] = useState(null)
   const [chatBusy, setChatBusy] = useState(false)
 
   // Demo-only slices (see note above).
@@ -58,7 +57,7 @@ export function AppProvider({ children }) {
     return () => clearTimeout(t)
   }, [toast])
 
-  const resetChat = useCallback(() => { setMessages([]); setConversationId(null) }, [])
+  const resetChat = useCallback(() => setMessages([]), [])
   const logout = useCallback(() => { clearSession(); setUser(null); resetChat() }, [resetChat])
 
   // Real login: the token and user come from the backend (see api/auth.js for what is still unconfirmed).
@@ -114,8 +113,8 @@ export function AppProvider({ children }) {
 
   const value = useMemo(() => ({
     user, login, devLogin, logout, toast, notify,
-    messages, setMessages, conversationId, setConversationId, chatBusy, setChatBusy, startNewChat: resetChat,
+    messages, setMessages, chatBusy, setChatBusy, startNewChat: resetChat,
     student, setStudent, tickets, addTicket, updateTicket, drives, tenants, addTenant, resetDemo,
-  }), [user, toast, messages, conversationId, chatBusy, student, tickets, drives, tenants, login, devLogin, logout, resetChat, notify]) // eslint-disable-line
+  }), [user, toast, messages, chatBusy, student, tickets, drives, tenants, login, devLogin, logout, resetChat, notify]) // eslint-disable-line
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>
 }

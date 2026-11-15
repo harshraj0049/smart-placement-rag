@@ -18,12 +18,15 @@ class DocumentApiTests(unittest.TestCase):
         self.storage_patch = patch("backend.documents.UPLOAD_ROOT", Path(self.storage.name))
         self.storage_patch.start()
         self.addCleanup(self.storage_patch.stop)
-        self.embedding_patch = patch("backend.documents._get_embedding_model", return_value=object())
+        self.embedding_patch = patch("backend.documents.get_embedding_model", return_value=object())
         self.embedding_patch.start()
         self.addCleanup(self.embedding_patch.stop)
         self.ingest_patch = patch("backend.documents.ingest_document", side_effect=self.fake_ingest)
         self.ingest = self.ingest_patch.start()
         self.addCleanup(self.ingest_patch.stop)
+        self.invalidate_patch = patch("backend.documents.invalidate_chat_retrievers")
+        self.invalidate_retrievers = self.invalidate_patch.start()
+        self.addCleanup(self.invalidate_patch.stop)
         self.client = TestClient(app)
 
     def fake_ingest(self, file_path, original_filename, metadata, college_id, embeddings):
@@ -57,6 +60,7 @@ class DocumentApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["status"], "added")
         self.assertEqual(response.json()["chunks"], 3)
+        self.invalidate_retrievers.assert_called_once_with()
         saved_pdf = Path(self.storage.name) / "kiit" / f'{"a" * 32}.pdf'
         self.assertEqual(saved_pdf.read_bytes(), b"%PDF-1.7\ncontent")
 
