@@ -11,7 +11,7 @@ export const API_BASE_URL = (text(env.VITE_API_BASE_URL) || '/api').replace(/\/+
 // Paths are relative to API_BASE_URL. An empty string means "not available yet":
 // the UI then shows an honest "not connected" state instead of calling the server.
 export const ENDPOINTS = {
-  login: text(env.VITE_AUTH_LOGIN_PATH),                                   // UNCONFIRMED: ask Sarthak
+  login: text(env.VITE_AUTH_LOGIN_PATH) || '/auth/login',                  // POST JSON { email, password }
   documentsUpload: text(env.VITE_DOCUMENTS_UPLOAD_PATH) || '/documents',   // POST multipart/form-data (team discussion)
   documentsList: text(env.VITE_DOCUMENTS_LIST_PATH),                       // GET: not ready yet
   chat: text(env.VITE_CHAT_PATH) || '/query',                              // UNCONFIRMED: inherited from the earlier README

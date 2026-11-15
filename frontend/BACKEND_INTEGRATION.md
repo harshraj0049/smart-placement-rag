@@ -1,35 +1,42 @@
-# Backend integration guide (for Sarthak and Harsh)
+# Backend integration guide
 
 The frontend never sends `college_id`. The backend must take the college from the authenticated user's JWT and enforce
 college isolation (documents and chat) and roles (`admin` vs `student`) on every request. Route guards in the React app
 are navigation only.
 
 Paths below are relative to `VITE_API_BASE_URL` (default `/api`, proxied to FastAPI by `vite.config.js`).
-**Everything marked UNCONFIRMED is an assumption in one place in the code. Change it there, not in components.**
+Authentication is implemented for this demo. The document, chat, and history integrations below are still pending.
 
 ## Where each contract lives in the code
 
 | Area | File | What to edit |
 |---|---|---|
-| Endpoint paths | `.env` (see `.env.example`), read in `src/config.js` | Set the real paths. An empty path shows a "not connected yet" state. |
-| Login | `src/api/auth.js` → `AUTH_CONTRACT` | Field names, JSON vs form encoding, role strings |
+| Endpoint paths | `.env` (see `.env.example`), read in `src/config.js` | Set paths for integrations that are not implemented yet. |
+| Login | `src/api/auth.js` → `AUTH_CONTRACT` | Login field names, response keys, role strings |
 | Upload and document list | `src/api/documents.js` | Multipart part names, response keys |
 | Chat and history | `src/api/chat.js` | Request body, response keys |
-| Token header, error parsing, 401 handling | `src/api/http.js` | Bearer vs cookie, error shape |
+| Token header, error parsing, 401 handling | `src/api/http.js` | Bearer token and error shape |
 | Token storage | `src/auth/session.js` | localStorage vs cookie |
 
-## 1. Authentication (UNCONFIRMED, nothing agreed)
+## 1. Authentication (implemented demo)
 
-| | Frontend currently does |
-|---|---|
-| Endpoint | `POST VITE_AUTH_LOGIN_PATH` (empty by default → login shows "not connected") |
-| Request | JSON `{ "email", "password" }` (switchable to form-encoded with a `username` field in `AUTH_CONTRACT`) |
-| Response read | `access_token` (string). Optional `user: { role, name, email, college_name }`. Falls back to `role` / `name` / `email` claims in the JWT. |
-| Roles | `admin`, `college_admin` → College Admin. `student` → Student. Anything else is rejected. Edit `roleMap`. |
-| Authenticated calls | `Authorization: Bearer <token>` on every request |
-| Expiry | Token `exp` claim is checked every 30 s and on load. Any 401 on a request that carried a token clears the session and goes to `/login` with a "session ended" notice. No refresh logic. |
+The FastAPI service is in `backend/`. It has no database and only accepts these fixed demo accounts:
 
-## 2. Document upload (admin)
+| Role | Email | Password |
+|---|---|---|
+| Student | `rohan.sharma@kiit.ac.in` | `student123` |
+| College admin | `tnp@kiit.ac.in` | `admin123` |
+
+- Start the backend from the repository root with `uvicorn backend.main:app --reload`.
+- Start the frontend from `frontend/` with `npm run dev`. Vite proxies `/api` to `http://localhost:8000`.
+- `POST /api/auth/login` accepts JSON `{ "email", "password" }` and returns `{ "access_token", "token_type", "user" }`.
+- `GET /api/auth/me` requires `Authorization: Bearer <token>` and returns the signed-in demo profile.
+- Access tokens are HS256 signed and expire after one hour. Set `AUTH_SECRET` to a stable secret if tokens should survive backend restarts; otherwise a random key is generated on each start.
+- This is demonstration-only authentication, not production identity management. Credentials are hardcoded, passwords are not stored in a database, and sign-up is disabled.
+
+The frontend stores the JWT in localStorage, checks expiry, and sends it as a bearer token. A 401 on an authenticated request clears the session and redirects to `/login`. `VITE_AUTH_LOGIN_PATH` can override the default `/auth/login` path relative to `VITE_API_BASE_URL`.
+
+## 2. Document upload (admin) — not implemented yet
 
 `POST VITE_DOCUMENTS_UPLOAD_PATH` (default `/documents`; use `/api/documents` via the proxy)
 
@@ -58,7 +65,7 @@ are shown to the admin as-is (e.g. the 422 "scanned PDF" message from `IngestErr
 `chunks` or `chunk_count`, `ingested_at` (epoch seconds, as in the chunk metadata) or `uploaded_at` / `created_at`.
 Until this exists, the page says so and only lists uploads confirmed by the server during the current visit.
 
-## 4. Chat (student) (UNCONFIRMED)
+## 4. Chat (student) — not implemented yet
 
 `POST VITE_CHAT_PATH` (default `/query`, inherited from the earlier README, please confirm)
 
@@ -74,20 +81,18 @@ History (optional): `GET VITE_CONVERSATIONS_PATH` → list of `{ id | conversati
 `GET VITE_CONVERSATION_PATH` with `{id}` placeholder → `{ messages: [{ role: "user"|"assistant", content | text, sources }] }`.
 Both are empty by default and the UI says history is not available.
 
-## Open items to settle
+## Open integration items
 
-**Sarthak (backend)**
-1. Login: path, request encoding and field names, response shape, role strings, whether admin and student log in at the same endpoint, and whether name / college come back in the response, in the JWT, or need a "me" endpoint.
-2. Token transport: Bearer header (assumed) or httpOnly cookie? If cookie, the frontend needs `credentials: 'include'` plus CORS/CSRF handling. Token lifetime and refresh strategy.
-3. Which JWT claim carries the college, and confirmation that every documents and chat route filters by it.
-4. Upload: final path and prefix, multipart part names, response keys (esp. the chunk count key), HTTP codes for bad PDF / too large / validation, and whether ingestion is synchronous. Embedding a large PDF may take a while and the frontend has no timeout and shows no fake progress.
-5. Document list endpoint: path, fields, an indexing `status` vocabulary, pagination. Is delete or replace-by-id planned?
-6. Chat: path, request and response above, whether the thread is held by `conversation_id`, and the error codes for "no answer" versus failures.
-7. Chat history endpoints, if they will exist at all.
-8. CORS settings, or confirmation that production serves the frontend and API from one origin.
-9. Later, not blocking: endpoints for student profile and eligibility, company/drive information, student statistics for the admin dashboard, and a document count for the student dashboard.
+1. Which JWT claim carries the college, and ensure every documents and chat route filters by it.
+2. Upload: final path and prefix, multipart part names, response keys (especially the chunk count key), HTTP codes for bad PDF / too large / validation, and whether ingestion is synchronous. Embedding a large PDF may take a while and the frontend has no timeout and shows no fake progress.
+3. Document list endpoint: path, fields, an indexing `status` vocabulary, pagination. Is delete or replace-by-id planned?
+4. Chat: path, request and response above, whether the thread is held by `conversation_id`, and the error codes for "no answer" versus failures.
+5. Chat history endpoints, if they will exist at all.
+6. CORS settings, or confirmation that production serves the frontend and API from one origin.
+7. Later, not blocking: endpoints for student profile and eligibility, company/drive information, student statistics for the admin dashboard, and a document count for the student dashboard.
 
-**Harsh (RAG)**
+## RAG notes
+
 1. `rag/query.py` returns plain text. For source chips the response needs document name and page per source (the chunk metadata already has `document_name` and `page`).
 2. `rag/ingest.py`: the `job_role` field is currently indented inside the `NoticeType` enum, not inside `DocumentMetadata`. `ingest_document` reads `meta.job_role`, so company notices would fail with an attribute error. Move it into `DocumentMetadata` (and add it to the cleaning validator as the comment says).
 3. The frontend mirrors the limits in `ingest.py` (20 MB, title 120, company 100, job role 100). Tell us if they change.

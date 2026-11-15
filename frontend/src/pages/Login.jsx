@@ -1,26 +1,38 @@
 import { useState } from 'react'
-import { Link, Navigate, useLocation } from 'react-router-dom'
-import { GraduationCap, UserRound, ClipboardList, Boxes, Loader2, AlertCircle, Info } from 'lucide-react'
+import { Navigate, useLocation } from 'react-router-dom'
+import { GraduationCap, UserRound, ClipboardList, Loader2, AlertCircle, Info } from 'lucide-react'
 import { useApp } from '../context/AppContext'
 import { FEATURES } from '../config'
 import { ROLE_HOME } from '../auth/roles'
 
-// The tab only changes the placeholder. The role that decides where you land comes from the backend after login.
+// The role selected here only picks demo credentials; the backend response decides where the user lands.
 const ROLES = [
   ['student', 'Student', UserRound, 'you@college.edu'],
   ['admin', 'College admin', ClipboardList, 'tnp@college.edu'],
-  ...(FEATURES.futurePages ? [['super', 'Platform admin', Boxes, 'root@placemate.ai']] : []),
 ]
+const DEMO_ACCOUNTS = {
+  student: { email: 'rohan.sharma@kiit.ac.in', password: 'student123' },
+  admin: { email: 'tnp@kiit.ac.in', password: 'admin123' },
+}
 
 export default function Login() {
   const { user, login, devLogin } = useApp()
   const { state } = useLocation()
   const [role, setRole] = useState('student')
-  const [email, setEmail] = useState('')
-  const [pw, setPw] = useState('')
+  const [email, setEmail] = useState(DEMO_ACCOUNTS.student.email)
+  const [pw, setPw] = useState(DEMO_ACCOUNTS.student.password)
   const [err, setErr] = useState('')
   const [busy, setBusy] = useState(false)
   const r = ROLES.find((x) => x[0] === role)
+  const selectRole = (id) => {
+    setRole(id)
+    const account = DEMO_ACCOUNTS[id]
+    if (account) {
+      setEmail(account.email)
+      setPw(account.password)
+      setErr('')
+    }
+  }
 
   if (user) {
     const home = ROLE_HOME[user.role]
@@ -48,7 +60,7 @@ export default function Login() {
           <span className="brand-mark"><GraduationCap size={20} /></span>PlaceMate <span style={{ color: 'var(--violet)' }}>AI</span>
         </div>
         <div className="links"><a href="#features">Features</a><a href="#privacy">Privacy</a><a href="#how">How it works</a></div>
-        <Link className="btn primary sm" to="/register">Sign up</Link>
+        <span className="muted">Demo authentication</span>
       </nav>
 
       <main className="login-wrap">
@@ -58,12 +70,9 @@ export default function Login() {
           {state?.reason === 'expired' && (
             <div className="callout warn" role="status" style={{ marginBottom: 18 }}><Info size={18} style={{ flex: 'none' }} /><span>Your session ended. Log in again to continue.</span></div>
           )}
-          {state?.registered && (
-            <div className="callout ok" role="status" style={{ marginBottom: 18 }}><Info size={18} style={{ flex: 'none' }} /><span>Account created. Log in to continue.</span></div>
-          )}
           <div className="role-pick" role="radiogroup" aria-label="Sign in as" style={{ gridTemplateColumns: `repeat(${ROLES.length}, 1fr)` }}>
             {ROLES.map(([id, label, Icon]) => (
-              <button type="button" key={id} role="radio" aria-checked={role === id} className={role === id ? 'on' : ''} onClick={() => setRole(id)}><Icon size={20} />{label}</button>
+              <button type="button" key={id} role="radio" aria-checked={role === id} className={role === id ? 'on' : ''} onClick={() => selectRole(id)}><Icon size={20} />{label}</button>
             ))}
           </div>
           <div className="stack" style={{ gap: 18 }}>
@@ -72,7 +81,9 @@ export default function Login() {
             {err && <p id="login-err" role="alert" className="row" style={{ color: 'var(--red)', fontWeight: 600, alignItems: 'flex-start' }}><AlertCircle size={16} style={{ flex: 'none', marginTop: 2 }} />{err}</p>}
             <button className="btn primary block" style={{ height: 56, fontSize: 16 }} disabled={busy}>{busy ? <><Loader2 size={18} className="spin" />Logging in…</> : 'Log in'}</button>
           </div>
-          <p className="muted" style={{ textAlign: 'center', fontSize: 14, marginTop: 18 }}>New student? <Link to="/register" style={{ color: 'var(--blue)', fontWeight: 600 }}>Create an account</Link></p>
+          <div className="callout" role="note" style={{ marginTop: 18 }}>
+            Demo accounts only: <b>rohan.sharma@kiit.ac.in / student123</b> (student) and <b>tnp@kiit.ac.in / admin123</b> (admin).
+          </div>
           {FEATURES.devLogin && (
             <div className="dev-box">
               <b>Development only.</b> Skip login to look at the screens. Requests are sent without a token, so the backend will refuse them.

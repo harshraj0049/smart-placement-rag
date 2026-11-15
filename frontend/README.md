@@ -1,6 +1,6 @@
 # PlaceMate AI frontend
 
-React + Vite frontend for the Smart Campus Placement Assistant. It lives in this folder only; the Python RAG code is untouched.
+React + Vite frontend for the Smart Campus Placement Assistant. The authentication API is in the repository's `backend/` folder.
 
 Two roles for the MVP:
 
@@ -15,17 +15,27 @@ Documents, chat answers and chat history are never simulated: they come from the
 ## Run
 
 ```bash
-cd frontend
-npm install
-cp .env.example .env     # adjust paths once Sarthak confirms them
-npm run dev              # http://localhost:5173
-npm run build            # production build
+python -m pip install -r requirements.txt
+uvicorn backend.main:app --reload
 ```
 
-## Test it without a backend
+In another terminal:
 
-With `VITE_DEV_LOGIN=true` (in `.env.example`) the login page shows **Enter as student / college admin**. This only works in
-`npm run dev`. API calls then carry no token, so you can check:
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Vite opens at `http://localhost:5173`. Run `npm run build` in `frontend/` for a production build.
+
+The login page provides the two fixed demo accounts. Authentication details and demo-only limitations are in
+[`BACKEND_INTEGRATION.md`](./BACKEND_INTEGRATION.md).
+
+## Test screens without authentication
+
+Set `VITE_DEV_LOGIN=true` in `.env` to show **Enter as student / college admin** without logging in. This only works in
+`npm run dev`. API calls then carry no token, so use it only to inspect screens; the backend rejects those calls.
 
 - Admin → Knowledge base → Upload document: every validation message, the company-notice fields, and that the button locks while uploading. Without a server the upload ends in "Cannot reach the server".
 - Student → AI Placement Assistant: loading, empty and error states, and **Try again**.
@@ -37,7 +47,7 @@ open the browser's Network tab: the upload is `multipart/form-data` with no `col
 ## Connecting the backend
 
 Read **`BACKEND_INTEGRATION.md`**. It lists every endpoint, request and response the frontend expects, which parts are
-unconfirmed, and the questions for Sarthak and Harsh. In short:
+still unconfirmed, and the remaining backend/RAG integration questions. In short:
 
 1. Set the paths in `.env` (`VITE_AUTH_LOGIN_PATH`, `VITE_DOCUMENTS_UPLOAD_PATH`, `VITE_DOCUMENTS_LIST_PATH`, `VITE_CHAT_PATH`, ...).
 2. Adjust the small `*_CONTRACT` blocks in `src/api/auth.js`, `src/api/documents.js`, `src/api/chat.js` if the field names differ.
