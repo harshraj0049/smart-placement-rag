@@ -28,10 +28,6 @@ class NoticeType(str, Enum):
     update = "update"
     general = "general"
 
-# inside DocumentMetadata, add:
-    job_role: Optional[str] = Field(default=None, max_length=100)
-# and add "job_role" to the cleaning validator:  @field_validator("company", "title", "job_role", mode="before")
-
 
 class DocumentMetadata(BaseModel):
     """The contract between the admin's form and the backend."""
@@ -41,8 +37,9 @@ class DocumentMetadata(BaseModel):
     notice_type: Optional[NoticeType] = None
     title: Optional[str] = Field(default=None, max_length=120)
     notice_date: Optional[date] = None
+    job_role: Optional[str] = Field(default=None, max_length=100)
 
-    @field_validator("company", "title", mode="before")
+    @field_validator("company", "title", "job_role", mode="before")
     @classmethod
     def clean(cls, v):
         if v is None:

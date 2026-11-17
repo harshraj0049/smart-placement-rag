@@ -1,3 +1,4 @@
+
 langchain
 langchain-core
 langchain-classic
@@ -5,10 +6,15 @@ langchain-community
 langchain-google-genai
 langchain-text-splitters
 langchain-chroma
+
 python-dotenv
 chromadb
+
+fastapi
+uvicorn[standard]
+httpx
+python-multipart
+
 sentence-transformers
 rank-bm25
 pypdf
-google-generativeai
-chromadb

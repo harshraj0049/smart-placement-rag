@@ -1,5 +1,5 @@
 // DEMO DATA. Only the sample companies/eligibility pages and the pages outside the immediate MVP read from here.
-// Documents, chat answers and chat history are no longer simulated: they come from the backend.
+// Documents and chat answers come from the backend; conversations are not saved.
 const day = 86400000
 const now = Date.now()
 const ago = (d, h = 0) => new Date(now - d * day - h * 3600000).toISOString()
@@ -8,12 +8,10 @@ const ahead = (d, h = 0) => new Date(now + d * day + h * 3600000).toISOString()
 export const TENANT = { id: 'kiit', name: 'KIIT University', short: 'KIIT', cell: 'Training & Placement Cell' }
 
 export const STUDENT = {
-  id: 's1', name: 'Rohan Sharma', email: 'rohan.sharma@kiit.ac.in', role: 'student',
+  name: 'Rohan Sharma',
   roll: '2205xxxx', branch: 'CSE', year: 2027, cgpa: 8.4, backlogs: 0,
   examsCleared: 3, currentOfferLpa: null, stream: 'IT',
 }
-export const ADMIN = { id: 'a1', name: 'Kavita Singh', email: 'tnp@kiit.ac.in', role: 'admin', title: 'TnP Coordinator' }
-export const SUPER = { id: 'sa1', name: 'Platform Admin', email: 'root@placemate.ai', role: 'super', title: 'Super admin' }
 
 export const DRIVES = [
   { id: 'd1', company: 'Google', role: 'Software Engineer', ctc: 32, category: 3, type: 'IT', date: ahead(2), deadline: ahead(0, 9),

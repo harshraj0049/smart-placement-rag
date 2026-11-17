@@ -16,11 +16,13 @@ def get_bm25_retriever(chunks,k:int=3):
 def get_hybrid_retriver(vector_store:Chroma,k:int=3):
 
     all_docs=vector_store.get()
+    vector_retriver=get_vector_retriver(vector_store,k)
+    if not all_docs["ids"]:
+        return vector_retriver
+
     docs=[
         Document(page_content=all_docs["documents"][i],metadata=all_docs["metadatas"][i]) for i in range (len(all_docs["ids"]))
     ]
-
-    vector_retriver=get_vector_retriver(vector_store,k)
 
     bm25_retriever=get_bm25_retriever(docs,k)
 

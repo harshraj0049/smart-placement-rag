@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { FileText, ShieldCheck, Building2, CalendarDays, Flame, Megaphone, ArrowRight, Sparkles, Send, MessageCircleQuestion, History, GraduationCap } from 'lucide-react'
+import { FileText, ShieldCheck, Building2, CalendarDays, Flame, Megaphone, ArrowRight, Sparkles, Send, MessageCircleQuestion, GraduationCap } from 'lucide-react'
 import { useState } from 'react'
 import { useApp } from '../../context/AppContext'
 import { UPDATES } from '../../data/seed'
@@ -66,7 +66,6 @@ export default function StudentDashboard() {
               ['Ask AI assistant', 'Get instant answers', MessageCircleQuestion, '#e6edff', '#2d5bff', '/app/assistant'],
               ['Check eligibility', 'For every drive', ShieldCheck, '#e7f7ee', '#12a150', '/app/eligibility'],
               ['View companies', 'Explore opportunities', Building2, '#fff0dd', '#ea7a0c', '/app/companies'],
-              ['Chat history', 'Earlier questions', History, '#eeebff', '#5b4bff', '/app/history'],
             ].map(([t, s, I, bg, c, to]) => (
               <button key={t} onClick={() => nav(to)}><span className="qi" style={{ background: bg, color: c }}><I size={22} /></span><b>{t}</b><span>{s}</span></button>
             ))}
